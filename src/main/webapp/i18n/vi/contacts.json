@@ -1,0 +1,37 @@
+
+{
+    "gatewayApp": {
+        "contacts" : {
+            "home": {
+                "title": "Contacts",
+                "createLabel": "Thêm mới một Contacts",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Contacts"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Contacts {{ id }}?"
+            },
+            "detail": {
+                "title": "Contacts"
+            },
+            "seqId": "Seq Id",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "contactLists": "Contact Lists",
+            "contactCount": "Contact Count",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "contacts" : {
+            "created": "Một Contacts mới được tạo với định danh {{ param }}",
+            "updated": "Một Contacts cập nhật với định danh {{ param }}",
+            "deleted": "Một Contacts đã xóa với định danh {{ param }}"
+        }
+    }
+}

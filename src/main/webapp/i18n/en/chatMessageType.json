@@ -1,0 +1,10 @@
+{
+    "gatewayApp": {
+        "ChatMessageType" : {
+            "null": "",
+            "TEXT": "TEXT",
+            "FILE": "FILE",
+            "QRCODE": "QRCODE"
+        }
+    }
+}

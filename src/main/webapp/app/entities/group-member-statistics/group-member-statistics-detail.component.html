@@ -1,0 +1,54 @@
+
+<div *ngIf="groupMemberStatistics">
+    <h2><span jhiTranslate="gatewayApp.groupMemberStatistics.detail.title">Group Member Statistics</span> {{groupMemberStatistics.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.groupMemberStatistics.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{groupMemberStatistics.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.groupMemberStatistics.dayCount">Day Count</span></dt>
+        <dd>
+            <span>{{groupMemberStatistics.dayCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.groupMemberStatistics.monthCount">Month Count</span></dt>
+        <dd>
+            <span>{{groupMemberStatistics.monthCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.groupMemberStatistics.yearCount">Year Count</span></dt>
+        <dd>
+            <span>{{groupMemberStatistics.yearCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.groupMemberStatistics.inDay">In Day</span></dt>
+        <dd>
+            <span>{{groupMemberStatistics.inDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.groupMemberStatistics.inMonth">In Month</span></dt>
+        <dd>
+            <span>{{groupMemberStatistics.inMonth}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.groupMemberStatistics.inYear">In Year</span></dt>
+        <dd>
+            <span>{{groupMemberStatistics.inYear}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.groupMemberStatistics.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.CheckStatus.' + groupMemberStatistics.status}}">{{groupMemberStatistics.status}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'group-member-statistics/'+ groupMemberStatistics.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

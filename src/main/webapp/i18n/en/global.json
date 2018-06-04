@@ -7,6 +7,17 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "chatMessages": "Chat Messages",
+                "friends": "Friends",
+                "groupMembers": "Group Members",
+                "groupMemberStatistics": "Group Member Statistics",
+                "chatMessageStatistics": "Chat Message Statistics",
+                "contacts": "Contacts",
+                "fanpages": "Fanpages",
+                "fanpageStatistics": "Fanpage Statistics",
+                "userSettings": "User Settings",
+                "pushNotifications": "Push Notifications",
+                "serviceSettings": "Service Settings",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

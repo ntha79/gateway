@@ -1,0 +1,74 @@
+
+<div *ngIf="pushNotifications">
+    <h2><span jhiTranslate="gatewayApp.pushNotifications.detail.title">Push Notifications</span> {{pushNotifications.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{pushNotifications.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.name">Name</span></dt>
+        <dd>
+            <span>{{pushNotifications.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.message">Message</span></dt>
+        <dd>
+            <span>{{pushNotifications.message}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.linkDetail">Link Detail</span></dt>
+        <dd>
+            <span>{{pushNotifications.linkDetail}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.PushNotificationStatus.' + pushNotifications.status}}">{{pushNotifications.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.toMemberList">To Member List</span></dt>
+        <dd>
+            <span>{{pushNotifications.toMemberList}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{pushNotifications.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{pushNotifications.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.createdUnixTime">Created Unix Time</span></dt>
+        <dd>
+            <span>{{pushNotifications.createdUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{pushNotifications.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{pushNotifications.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.lastModifiedUnixTime">Last Modified Unix Time</span></dt>
+        <dd>
+            <span>{{pushNotifications.lastModifiedUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.pushNotifications.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{pushNotifications.reportDay}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'push-notifications/'+ pushNotifications.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

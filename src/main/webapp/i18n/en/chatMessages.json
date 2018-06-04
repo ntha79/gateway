@@ -1,0 +1,40 @@
+
+{
+    "gatewayApp": {
+        "chatMessages" : {
+            "home": {
+                "title": "Chat Messages",
+                "createLabel": "Create a new Chat Messages",
+                "createOrEditLabel": "Create or edit a Chat Messages"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Chat Messages {{ id }}?"
+            },
+            "detail": {
+                "title": "Chat Messages"
+            },
+            "messageId": "Message Id",
+            "groupChatId": "Group Chat Id",
+            "groupType": "Group Type",
+            "messageValue": "Message Value",
+            "messageType": "Message Type",
+            "senderId": "Sender Id",
+            "senderLogin": "Sender Login",
+            "receiverLists": "Receiver Lists",
+            "receiverType": "Receiver Type",
+            "receiverText": "Receiver Text",
+            "createUnixTime": "Create Unix Time",
+            "updateUnixTime": "Update Unix Time",
+            "reportDay": "Report Day",
+            "maxTimeToAction": "Max Time To Action",
+            "referMessageId": "Refer Message Id"
+        }
+    },
+    "chatserviceApp": {
+        "chatMessages" : {
+            "created": "A new Chat Messages is created with identifier {{ param }}",
+            "updated": "A Chat Messages is updated with identifier {{ param }}",
+            "deleted": "A Chat Messages is deleted with identifier {{ param }}"
+        }
+    }
+}

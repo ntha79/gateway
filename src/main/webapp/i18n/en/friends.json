@@ -1,0 +1,37 @@
+
+{
+    "gatewayApp": {
+        "friends" : {
+            "home": {
+                "title": "Friends",
+                "createLabel": "Create a new Friends",
+                "createOrEditLabel": "Create or edit a Friends"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Friends {{ id }}?"
+            },
+            "detail": {
+                "title": "Friends"
+            },
+            "seqId": "Seq Id",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "friendLists": "Friend Lists",
+            "friendCount": "Friend Count",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "friends" : {
+            "created": "A new Friends is created with identifier {{ param }}",
+            "updated": "A Friends is updated with identifier {{ param }}",
+            "deleted": "A Friends is deleted with identifier {{ param }}"
+        }
+    }
+}

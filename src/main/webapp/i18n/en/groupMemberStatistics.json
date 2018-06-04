@@ -1,0 +1,33 @@
+
+{
+    "gatewayApp": {
+        "groupMemberStatistics" : {
+            "home": {
+                "title": "Group Member Statistics",
+                "createLabel": "Create a new Group Member Statistics",
+                "createOrEditLabel": "Create or edit a Group Member Statistics"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Group Member Statistics {{ id }}?"
+            },
+            "detail": {
+                "title": "Group Member Statistics"
+            },
+            "seqId": "Seq Id",
+            "dayCount": "Day Count",
+            "monthCount": "Month Count",
+            "yearCount": "Year Count",
+            "inDay": "In Day",
+            "inMonth": "In Month",
+            "inYear": "In Year",
+            "status": "Status"
+        }
+    },
+    "chatserviceApp": {
+        "groupMemberStatistics" : {
+            "created": "A new Group Member Statistics is created with identifier {{ param }}",
+            "updated": "A Group Member Statistics is updated with identifier {{ param }}",
+            "deleted": "A Group Member Statistics is deleted with identifier {{ param }}"
+        }
+    }
+}

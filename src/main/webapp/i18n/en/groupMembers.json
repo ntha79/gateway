@@ -1,0 +1,44 @@
+
+{
+    "gatewayApp": {
+        "groupMembers" : {
+            "home": {
+                "title": "Group Members",
+                "createLabel": "Create a new Group Members",
+                "createOrEditLabel": "Create or edit a Group Members"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Group Members {{ id }}?"
+            },
+            "detail": {
+                "title": "Group Members"
+            },
+            "groupId": "Group Id",
+            "groupType": "Group Type",
+            "groupName": "Group Name",
+            "groupIcon": "Group Icon",
+            "groupSlogan": "Group Slogan",
+            "groupStatus": "Group Status",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "memberLists": "Member Lists",
+            "maxMember": "Max Member",
+            "memberCount": "Member Count",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "lastChatUnixTime": "Last Chat Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "groupMembers" : {
+            "created": "A new Group Members is created with identifier {{ param }}",
+            "updated": "A Group Members is updated with identifier {{ param }}",
+            "deleted": "A Group Members is deleted with identifier {{ param }}"
+        }
+    }
+}

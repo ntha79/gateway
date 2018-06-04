@@ -1,0 +1,88 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.contacts.home.title">Contacts</span>
+        <button class="btn btn-primary float-right jh-create-entity create-contacts" [routerLink]="['/', { outlets: { popup: ['contacts-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="gatewayApp.contacts.home.createLabel">
+            Create new Contacts
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="contacts">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="seqId"><span jhiTranslate="gatewayApp.contacts.seqId">Seq Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ownerId"><span jhiTranslate="gatewayApp.contacts.ownerId">Owner Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ownerLogin"><span jhiTranslate="gatewayApp.contacts.ownerLogin">Owner Login</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="contactLists"><span jhiTranslate="gatewayApp.contacts.contactLists">Contact Lists</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="contactCount"><span jhiTranslate="gatewayApp.contacts.contactCount">Contact Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="gatewayApp.contacts.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="gatewayApp.contacts.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdUnixTime"><span jhiTranslate="gatewayApp.contacts.createdUnixTime">Created Unix Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="gatewayApp.contacts.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="gatewayApp.contacts.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedUnixTime"><span jhiTranslate="gatewayApp.contacts.lastModifiedUnixTime">Last Modified Unix Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reportDay"><span jhiTranslate="gatewayApp.contacts.reportDay">Report Day</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let contacts of contacts ;trackBy: trackId">
+                <td><a [routerLink]="['../contacts', contacts.id ]">{{contacts.id}}</a></td>
+                <td>{{contacts.seqId}}</td>
+                <td>{{contacts.ownerId}}</td>
+                <td>{{contacts.ownerLogin}}</td>
+                <td>{{contacts.contactLists}}</td>
+                <td>{{contacts.contactCount}}</td>
+                <td>{{contacts.createdBy}}</td>
+                <td>{{contacts.createdDate | date:'medium'}}</td>
+                <td>{{contacts.createdUnixTime}}</td>
+                <td>{{contacts.lastModifiedBy}}</td>
+                <td>{{contacts.lastModifiedDate | date:'medium'}}</td>
+                <td>{{contacts.lastModifiedUnixTime}}</td>
+                <td>{{contacts.reportDay}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../contacts', contacts.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="contacts && contacts.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

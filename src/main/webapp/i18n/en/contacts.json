@@ -1,0 +1,37 @@
+
+{
+    "gatewayApp": {
+        "contacts" : {
+            "home": {
+                "title": "Contacts",
+                "createLabel": "Create a new Contacts",
+                "createOrEditLabel": "Create or edit a Contacts"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Contacts {{ id }}?"
+            },
+            "detail": {
+                "title": "Contacts"
+            },
+            "seqId": "Seq Id",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "contactLists": "Contact Lists",
+            "contactCount": "Contact Count",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "contacts" : {
+            "created": "A new Contacts is created with identifier {{ param }}",
+            "updated": "A Contacts is updated with identifier {{ param }}",
+            "deleted": "A Contacts is deleted with identifier {{ param }}"
+        }
+    }
+}

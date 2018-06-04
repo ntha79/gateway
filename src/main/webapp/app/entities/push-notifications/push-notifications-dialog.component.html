@@ -1,0 +1,98 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPushNotificationsLabel" jhiTranslate="gatewayApp.pushNotifications.home.createOrEditLabel">Create or edit a Push Notifications</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!pushNotifications.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="pushNotifications.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.seqId" for="field_seqId">Seq Id</label>
+            <input type="text" class="form-control" name="seqId" id="field_seqId"
+                [(ngModel)]="pushNotifications.seqId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="pushNotifications.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.message" for="field_message">Message</label>
+            <input type="text" class="form-control" name="message" id="field_message"
+                [(ngModel)]="pushNotifications.message" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.linkDetail" for="field_linkDetail">Link Detail</label>
+            <input type="text" class="form-control" name="linkDetail" id="field_linkDetail"
+                [(ngModel)]="pushNotifications.linkDetail" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="pushNotifications.status" id="field_status" >
+                <option value="INIT">{{'gatewayApp.PushNotificationStatus.INIT' | translate}}</option>
+                <option value="SENDING">{{'gatewayApp.PushNotificationStatus.SENDING' | translate}}</option>
+                <option value="CANCEL">{{'gatewayApp.PushNotificationStatus.CANCEL' | translate}}</option>
+                <option value="FINISH">{{'gatewayApp.PushNotificationStatus.FINISH' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.toMemberList" for="field_toMemberList">To Member List</label>
+            <input type="text" class="form-control" name="toMemberList" id="field_toMemberList"
+                [(ngModel)]="pushNotifications.toMemberList" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="pushNotifications.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="pushNotifications.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.createdUnixTime" for="field_createdUnixTime">Created Unix Time</label>
+            <input type="number" class="form-control" name="createdUnixTime" id="field_createdUnixTime"
+                [(ngModel)]="pushNotifications.createdUnixTime" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="pushNotifications.lastModifiedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="d-flex">
+                <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" [(ngModel)]="pushNotifications.lastModifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.lastModifiedUnixTime" for="field_lastModifiedUnixTime">Last Modified Unix Time</label>
+            <input type="number" class="form-control" name="lastModifiedUnixTime" id="field_lastModifiedUnixTime"
+                [(ngModel)]="pushNotifications.lastModifiedUnixTime" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.pushNotifications.reportDay" for="field_reportDay">Report Day</label>
+            <input type="number" class="form-control" name="reportDay" id="field_reportDay"
+                [(ngModel)]="pushNotifications.reportDay" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,38 @@
+
+{
+    "gatewayApp": {
+        "pushNotifications" : {
+            "home": {
+                "title": "Push Notifications",
+                "createLabel": "Create a new Push Notifications",
+                "createOrEditLabel": "Create or edit a Push Notifications"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Push Notifications {{ id }}?"
+            },
+            "detail": {
+                "title": "Push Notifications"
+            },
+            "seqId": "Seq Id",
+            "name": "Name",
+            "message": "Message",
+            "linkDetail": "Link Detail",
+            "status": "Status",
+            "toMemberList": "To Member List",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "pushNotifications" : {
+            "created": "A new Push Notifications is created with identifier {{ param }}",
+            "updated": "A Push Notifications is updated with identifier {{ param }}",
+            "deleted": "A Push Notifications is deleted with identifier {{ param }}"
+        }
+    }
+}

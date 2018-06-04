@@ -1,0 +1,54 @@
+
+<div *ngIf="chatMessageStatistics">
+    <h2><span jhiTranslate="gatewayApp.chatMessageStatistics.detail.title">Chat Message Statistics</span> {{chatMessageStatistics.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.chatMessageStatistics.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{chatMessageStatistics.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessageStatistics.dayCount">Day Count</span></dt>
+        <dd>
+            <span>{{chatMessageStatistics.dayCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessageStatistics.monthCount">Month Count</span></dt>
+        <dd>
+            <span>{{chatMessageStatistics.monthCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessageStatistics.yearCount">Year Count</span></dt>
+        <dd>
+            <span>{{chatMessageStatistics.yearCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessageStatistics.inDay">In Day</span></dt>
+        <dd>
+            <span>{{chatMessageStatistics.inDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessageStatistics.inMonth">In Month</span></dt>
+        <dd>
+            <span>{{chatMessageStatistics.inMonth}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessageStatistics.inYear">In Year</span></dt>
+        <dd>
+            <span>{{chatMessageStatistics.inYear}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessageStatistics.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.CheckStatus.' + chatMessageStatistics.status}}">{{chatMessageStatistics.status}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'chat-message-statistics/'+ chatMessageStatistics.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

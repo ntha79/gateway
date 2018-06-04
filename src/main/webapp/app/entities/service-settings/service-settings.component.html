@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.serviceSettings.home.title">Service Settings</span>
+        <button class="btn btn-primary float-right jh-create-entity create-service-settings" [routerLink]="['/', { outlets: { popup: ['service-settings-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="gatewayApp.serviceSettings.home.createLabel">
+            Create new Service Settings
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="serviceSettings">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="seqId"><span jhiTranslate="gatewayApp.serviceSettings.seqId">Seq Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="gatewayApp.serviceSettings.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="values"><span jhiTranslate="gatewayApp.serviceSettings.values">Values</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="gatewayApp.serviceSettings.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="gatewayApp.serviceSettings.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdUnixTime"><span jhiTranslate="gatewayApp.serviceSettings.createdUnixTime">Created Unix Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="gatewayApp.serviceSettings.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="gatewayApp.serviceSettings.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedUnixTime"><span jhiTranslate="gatewayApp.serviceSettings.lastModifiedUnixTime">Last Modified Unix Time</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let serviceSettings of serviceSettings ;trackBy: trackId">
+                <td><a [routerLink]="['../service-settings', serviceSettings.id ]">{{serviceSettings.id}}</a></td>
+                <td>{{serviceSettings.seqId}}</td>
+                <td>{{serviceSettings.code}}</td>
+                <td>{{serviceSettings.values}}</td>
+                <td>{{serviceSettings.createdBy}}</td>
+                <td>{{serviceSettings.createdDate | date:'medium'}}</td>
+                <td>{{serviceSettings.createdUnixTime}}</td>
+                <td>{{serviceSettings.lastModifiedBy}}</td>
+                <td>{{serviceSettings.lastModifiedDate | date:'medium'}}</td>
+                <td>{{serviceSettings.lastModifiedUnixTime}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../service-settings', serviceSettings.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'service-settings/'+ serviceSettings.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'service-settings/'+ serviceSettings.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="serviceSettings && serviceSettings.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

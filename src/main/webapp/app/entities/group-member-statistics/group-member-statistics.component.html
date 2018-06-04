@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.groupMemberStatistics.home.title">Group Member Statistics</span>
+        <button class="btn btn-primary float-right jh-create-entity create-group-member-statistics" [routerLink]="['/', { outlets: { popup: ['group-member-statistics-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="gatewayApp.groupMemberStatistics.home.createLabel">
+            Create new Group Member Statistics
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="groupMemberStatistics">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="seqId"><span jhiTranslate="gatewayApp.groupMemberStatistics.seqId">Seq Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dayCount"><span jhiTranslate="gatewayApp.groupMemberStatistics.dayCount">Day Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="monthCount"><span jhiTranslate="gatewayApp.groupMemberStatistics.monthCount">Month Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="yearCount"><span jhiTranslate="gatewayApp.groupMemberStatistics.yearCount">Year Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="inDay"><span jhiTranslate="gatewayApp.groupMemberStatistics.inDay">In Day</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="inMonth"><span jhiTranslate="gatewayApp.groupMemberStatistics.inMonth">In Month</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="inYear"><span jhiTranslate="gatewayApp.groupMemberStatistics.inYear">In Year</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="gatewayApp.groupMemberStatistics.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let groupMemberStatistics of groupMemberStatistics ;trackBy: trackId">
+                <td><a [routerLink]="['../group-member-statistics', groupMemberStatistics.id ]">{{groupMemberStatistics.id}}</a></td>
+                <td>{{groupMemberStatistics.seqId}}</td>
+                <td>{{groupMemberStatistics.dayCount}}</td>
+                <td>{{groupMemberStatistics.monthCount}}</td>
+                <td>{{groupMemberStatistics.yearCount}}</td>
+                <td>{{groupMemberStatistics.inDay}}</td>
+                <td>{{groupMemberStatistics.inMonth}}</td>
+                <td>{{groupMemberStatistics.inYear}}</td>
+                <td jhiTranslate="{{'gatewayApp.CheckStatus.' + groupMemberStatistics.status}}">{{groupMemberStatistics.status}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../group-member-statistics', groupMemberStatistics.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'group-member-statistics/'+ groupMemberStatistics.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'group-member-statistics/'+ groupMemberStatistics.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="groupMemberStatistics && groupMemberStatistics.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

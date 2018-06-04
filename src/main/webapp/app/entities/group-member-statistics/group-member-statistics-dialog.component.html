@@ -1,0 +1,67 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myGroupMemberStatisticsLabel" jhiTranslate="gatewayApp.groupMemberStatistics.home.createOrEditLabel">Create or edit a Group Member Statistics</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!groupMemberStatistics.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="groupMemberStatistics.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.groupMemberStatistics.seqId" for="field_seqId">Seq Id</label>
+            <input type="text" class="form-control" name="seqId" id="field_seqId"
+                [(ngModel)]="groupMemberStatistics.seqId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.groupMemberStatistics.dayCount" for="field_dayCount">Day Count</label>
+            <input type="number" class="form-control" name="dayCount" id="field_dayCount"
+                [(ngModel)]="groupMemberStatistics.dayCount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.groupMemberStatistics.monthCount" for="field_monthCount">Month Count</label>
+            <input type="number" class="form-control" name="monthCount" id="field_monthCount"
+                [(ngModel)]="groupMemberStatistics.monthCount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.groupMemberStatistics.yearCount" for="field_yearCount">Year Count</label>
+            <input type="number" class="form-control" name="yearCount" id="field_yearCount"
+                [(ngModel)]="groupMemberStatistics.yearCount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.groupMemberStatistics.inDay" for="field_inDay">In Day</label>
+            <input type="number" class="form-control" name="inDay" id="field_inDay"
+                [(ngModel)]="groupMemberStatistics.inDay" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.groupMemberStatistics.inMonth" for="field_inMonth">In Month</label>
+            <input type="number" class="form-control" name="inMonth" id="field_inMonth"
+                [(ngModel)]="groupMemberStatistics.inMonth" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.groupMemberStatistics.inYear" for="field_inYear">In Year</label>
+            <input type="number" class="form-control" name="inYear" id="field_inYear"
+                [(ngModel)]="groupMemberStatistics.inYear" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.groupMemberStatistics.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="groupMemberStatistics.status" id="field_status" >
+                <option value="NOTCHECK">{{'gatewayApp.CheckStatus.NOTCHECK' | translate}}</option>
+                <option value="CHECKED">{{'gatewayApp.CheckStatus.CHECKED' | translate}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

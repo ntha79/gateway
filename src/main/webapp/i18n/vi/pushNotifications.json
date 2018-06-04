@@ -1,0 +1,38 @@
+
+{
+    "gatewayApp": {
+        "pushNotifications" : {
+            "home": {
+                "title": "Push Notifications",
+                "createLabel": "Thêm mới một Push Notifications",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Push Notifications"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Push Notifications {{ id }}?"
+            },
+            "detail": {
+                "title": "Push Notifications"
+            },
+            "seqId": "Seq Id",
+            "name": "Name",
+            "message": "Message",
+            "linkDetail": "Link Detail",
+            "status": "Status",
+            "toMemberList": "To Member List",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "pushNotifications" : {
+            "created": "Một Push Notifications mới được tạo với định danh {{ param }}",
+            "updated": "Một Push Notifications cập nhật với định danh {{ param }}",
+            "deleted": "Một Push Notifications đã xóa với định danh {{ param }}"
+        }
+    }
+}

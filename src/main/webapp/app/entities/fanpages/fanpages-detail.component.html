@@ -1,0 +1,94 @@
+
+<div *ngIf="fanpages">
+    <h2><span jhiTranslate="gatewayApp.fanpages.detail.title">Fanpages</span> {{fanpages.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.fanpages.fanpageId">Fanpage Id</span></dt>
+        <dd>
+            <span>{{fanpages.fanpageId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.fanName">Fan Name</span></dt>
+        <dd>
+            <span>{{fanpages.fanName}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.fanUrl">Fan Url</span></dt>
+        <dd>
+            <span>{{fanpages.fanUrl}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.fanAbout">Fan About</span></dt>
+        <dd>
+            <span>{{fanpages.fanAbout}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.fanIcon">Fan Icon</span></dt>
+        <dd>
+            <span>{{fanpages.fanIcon}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.fanThumbnail">Fan Thumbnail</span></dt>
+        <dd>
+            <span>{{fanpages.fanThumbnail}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.fanStatus">Fan Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.FanpageStatus.' + fanpages.fanStatus}}">{{fanpages.fanStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.memberList">Member List</span></dt>
+        <dd>
+            <span>{{fanpages.memberList}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.memberCount">Member Count</span></dt>
+        <dd>
+            <span>{{fanpages.memberCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.ownerId">Owner Id</span></dt>
+        <dd>
+            <span>{{fanpages.ownerId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.ownerLogin">Owner Login</span></dt>
+        <dd>
+            <span>{{fanpages.ownerLogin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{fanpages.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{fanpages.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.createdUnixTime">Created Unix Time</span></dt>
+        <dd>
+            <span>{{fanpages.createdUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{fanpages.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{fanpages.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.lastModifiedUnixTime">Last Modified Unix Time</span></dt>
+        <dd>
+            <span>{{fanpages.lastModifiedUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.fanpages.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{fanpages.reportDay}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'fanpages/'+ fanpages.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

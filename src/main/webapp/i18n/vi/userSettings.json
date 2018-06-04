@@ -1,0 +1,36 @@
+
+{
+    "gatewayApp": {
+        "userSettings" : {
+            "home": {
+                "title": "User Settings",
+                "createLabel": "Thêm mới một User Settings",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật User Settings"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa User Settings {{ id }}?"
+            },
+            "detail": {
+                "title": "User Settings"
+            },
+            "seqId": "Seq Id",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "priavateSettings": "Priavate Settings",
+            "socialSettings": "Social Settings",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time"
+        }
+    },
+    "chatserviceApp": {
+        "userSettings" : {
+            "created": "Một User Settings mới được tạo với định danh {{ param }}",
+            "updated": "Một User Settings cập nhật với định danh {{ param }}",
+            "deleted": "Một User Settings đã xóa với định danh {{ param }}"
+        }
+    }
+}

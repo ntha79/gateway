@@ -1,0 +1,33 @@
+
+{
+    "gatewayApp": {
+        "fanpageStatistics" : {
+            "home": {
+                "title": "Fanpage Statistics",
+                "createLabel": "Thêm mới một Fanpage Statistics",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Fanpage Statistics"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Fanpage Statistics {{ id }}?"
+            },
+            "detail": {
+                "title": "Fanpage Statistics"
+            },
+            "seqId": "Seq Id",
+            "dayCount": "Day Count",
+            "monthCount": "Month Count",
+            "yearCount": "Year Count",
+            "inDay": "In Day",
+            "inMonth": "In Month",
+            "inYear": "In Year",
+            "status": "Status"
+        }
+    },
+    "chatserviceApp": {
+        "fanpageStatistics" : {
+            "created": "Một Fanpage Statistics mới được tạo với định danh {{ param }}",
+            "updated": "Một Fanpage Statistics cập nhật với định danh {{ param }}",
+            "deleted": "Một Fanpage Statistics đã xóa với định danh {{ param }}"
+        }
+    }
+}

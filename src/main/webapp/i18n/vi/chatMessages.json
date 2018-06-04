@@ -1,0 +1,40 @@
+
+{
+    "gatewayApp": {
+        "chatMessages" : {
+            "home": {
+                "title": "Chat Messages",
+                "createLabel": "Thêm mới một Chat Messages",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Chat Messages"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Chat Messages {{ id }}?"
+            },
+            "detail": {
+                "title": "Chat Messages"
+            },
+            "messageId": "Message Id",
+            "groupChatId": "Group Chat Id",
+            "groupType": "Group Type",
+            "messageValue": "Message Value",
+            "messageType": "Message Type",
+            "senderId": "Sender Id",
+            "senderLogin": "Sender Login",
+            "receiverLists": "Receiver Lists",
+            "receiverType": "Receiver Type",
+            "receiverText": "Receiver Text",
+            "createUnixTime": "Create Unix Time",
+            "updateUnixTime": "Update Unix Time",
+            "reportDay": "Report Day",
+            "maxTimeToAction": "Max Time To Action",
+            "referMessageId": "Refer Message Id"
+        }
+    },
+    "chatserviceApp": {
+        "chatMessages" : {
+            "created": "Một Chat Messages mới được tạo với định danh {{ param }}",
+            "updated": "Một Chat Messages cập nhật với định danh {{ param }}",
+            "deleted": "Một Chat Messages đã xóa với định danh {{ param }}"
+        }
+    }
+}

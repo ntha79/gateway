@@ -1,0 +1,43 @@
+
+{
+    "gatewayApp": {
+        "fanpages" : {
+            "home": {
+                "title": "Fanpages",
+                "createLabel": "Create a new Fanpages",
+                "createOrEditLabel": "Create or edit a Fanpages"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Fanpages {{ id }}?"
+            },
+            "detail": {
+                "title": "Fanpages"
+            },
+            "fanpageId": "Fanpage Id",
+            "fanName": "Fan Name",
+            "fanUrl": "Fan Url",
+            "fanAbout": "Fan About",
+            "fanIcon": "Fan Icon",
+            "fanThumbnail": "Fan Thumbnail",
+            "fanStatus": "Fan Status",
+            "memberList": "Member List",
+            "memberCount": "Member Count",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "fanpages" : {
+            "created": "A new Fanpages is created with identifier {{ param }}",
+            "updated": "A Fanpages is updated with identifier {{ param }}",
+            "deleted": "A Fanpages is deleted with identifier {{ param }}"
+        }
+    }
+}

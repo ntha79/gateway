@@ -1,0 +1,10 @@
+{
+    "gatewayApp": {
+        "FanpageStatus" : {
+            "null": "",
+            "ACTIVE": "ACTIVE",
+            "REPORT": "REPORT",
+            "DELETED": "DELETED"
+        }
+    }
+}

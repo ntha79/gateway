@@ -1,0 +1,10 @@
+{
+    "gatewayApp": {
+        "ReceiverType" : {
+            "null": "",
+            "PUBLIC": "PUBLIC",
+            "FANPAGE": "FANPAGE",
+            "FRIEND": "FRIEND"
+        }
+    }
+}

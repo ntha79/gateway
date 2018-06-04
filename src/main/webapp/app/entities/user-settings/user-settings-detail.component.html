@@ -1,0 +1,66 @@
+
+<div *ngIf="userSettings">
+    <h2><span jhiTranslate="gatewayApp.userSettings.detail.title">User Settings</span> {{userSettings.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.userSettings.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{userSettings.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.ownerId">Owner Id</span></dt>
+        <dd>
+            <span>{{userSettings.ownerId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.ownerLogin">Owner Login</span></dt>
+        <dd>
+            <span>{{userSettings.ownerLogin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.priavateSettings">Priavate Settings</span></dt>
+        <dd>
+            <span>{{userSettings.priavateSettings}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.socialSettings">Social Settings</span></dt>
+        <dd>
+            <span>{{userSettings.socialSettings}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{userSettings.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{userSettings.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.createdUnixTime">Created Unix Time</span></dt>
+        <dd>
+            <span>{{userSettings.createdUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{userSettings.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{userSettings.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.userSettings.lastModifiedUnixTime">Last Modified Unix Time</span></dt>
+        <dd>
+            <span>{{userSettings.lastModifiedUnixTime}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-settings/'+ userSettings.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

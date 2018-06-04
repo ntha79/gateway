@@ -1,0 +1,11 @@
+{
+    "gatewayApp": {
+        "PushNotificationStatus" : {
+            "null": "",
+            "INIT": "INIT",
+            "SENDING": "SENDING",
+            "CANCEL": "CANCEL",
+            "FINISH": "FINISH"
+        }
+    }
+}

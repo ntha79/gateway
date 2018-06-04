@@ -2,7 +2,8 @@
   "generator-jhipster": {
     "promptValues": {
       "packageName": "com.hdmon.gateway",
-      "nativeLanguage": "en"
+      "nativeLanguage": "en",
+      "microservicePath": "../chatservice"
     },
     "jhipsterVersion": "4.14.3",
     "baseName": "gateway",

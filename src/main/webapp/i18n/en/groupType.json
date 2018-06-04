@@ -1,0 +1,11 @@
+{
+    "gatewayApp": {
+        "GroupType" : {
+            "null": "",
+            "PUBLIC": "PUBLIC",
+            "FANPAGE": "FANPAGE",
+            "SECRET": "SECRET",
+            "NORMAL": "NORMAL"
+        }
+    }
+}

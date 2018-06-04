@@ -1,0 +1,37 @@
+
+{
+    "gatewayApp": {
+        "friends" : {
+            "home": {
+                "title": "Friends",
+                "createLabel": "Thêm mới một Friends",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Friends"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Friends {{ id }}?"
+            },
+            "detail": {
+                "title": "Friends"
+            },
+            "seqId": "Seq Id",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "friendLists": "Friend Lists",
+            "friendCount": "Friend Count",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "friends" : {
+            "created": "Một Friends mới được tạo với định danh {{ param }}",
+            "updated": "Một Friends cập nhật với định danh {{ param }}",
+            "deleted": "Một Friends đã xóa với định danh {{ param }}"
+        }
+    }
+}

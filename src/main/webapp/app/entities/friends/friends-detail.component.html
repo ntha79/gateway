@@ -1,0 +1,70 @@
+
+<div *ngIf="friends">
+    <h2><span jhiTranslate="gatewayApp.friends.detail.title">Friends</span> {{friends.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.friends.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{friends.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.ownerId">Owner Id</span></dt>
+        <dd>
+            <span>{{friends.ownerId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.ownerLogin">Owner Login</span></dt>
+        <dd>
+            <span>{{friends.ownerLogin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.friendLists">Friend Lists</span></dt>
+        <dd>
+            <span>{{friends.friendLists}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.friendCount">Friend Count</span></dt>
+        <dd>
+            <span>{{friends.friendCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{friends.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{friends.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.createdUnixTime">Created Unix Time</span></dt>
+        <dd>
+            <span>{{friends.createdUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{friends.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{friends.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.lastModifiedUnixTime">Last Modified Unix Time</span></dt>
+        <dd>
+            <span>{{friends.lastModifiedUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.friends.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{friends.reportDay}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'friends/'+ friends.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

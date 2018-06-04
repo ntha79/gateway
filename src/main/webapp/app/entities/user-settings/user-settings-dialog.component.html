@@ -1,0 +1,84 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserSettingsLabel" jhiTranslate="gatewayApp.userSettings.home.createOrEditLabel">Create or edit a User Settings</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!userSettings.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="userSettings.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.seqId" for="field_seqId">Seq Id</label>
+            <input type="text" class="form-control" name="seqId" id="field_seqId"
+                [(ngModel)]="userSettings.seqId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.ownerId" for="field_ownerId">Owner Id</label>
+            <input type="number" class="form-control" name="ownerId" id="field_ownerId"
+                [(ngModel)]="userSettings.ownerId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.ownerLogin" for="field_ownerLogin">Owner Login</label>
+            <input type="text" class="form-control" name="ownerLogin" id="field_ownerLogin"
+                [(ngModel)]="userSettings.ownerLogin" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.priavateSettings" for="field_priavateSettings">Priavate Settings</label>
+            <input type="text" class="form-control" name="priavateSettings" id="field_priavateSettings"
+                [(ngModel)]="userSettings.priavateSettings" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.socialSettings" for="field_socialSettings">Social Settings</label>
+            <input type="text" class="form-control" name="socialSettings" id="field_socialSettings"
+                [(ngModel)]="userSettings.socialSettings" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="userSettings.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="userSettings.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.createdUnixTime" for="field_createdUnixTime">Created Unix Time</label>
+            <input type="number" class="form-control" name="createdUnixTime" id="field_createdUnixTime"
+                [(ngModel)]="userSettings.createdUnixTime" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="userSettings.lastModifiedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="d-flex">
+                <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" [(ngModel)]="userSettings.lastModifiedDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.userSettings.lastModifiedUnixTime" for="field_lastModifiedUnixTime">Last Modified Unix Time</label>
+            <input type="number" class="form-control" name="lastModifiedUnixTime" id="field_lastModifiedUnixTime"
+                [(ngModel)]="userSettings.lastModifiedUnixTime" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

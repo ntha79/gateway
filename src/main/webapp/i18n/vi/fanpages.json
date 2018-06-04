@@ -1,0 +1,43 @@
+
+{
+    "gatewayApp": {
+        "fanpages" : {
+            "home": {
+                "title": "Fanpages",
+                "createLabel": "Thêm mới một Fanpages",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Fanpages"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Fanpages {{ id }}?"
+            },
+            "detail": {
+                "title": "Fanpages"
+            },
+            "fanpageId": "Fanpage Id",
+            "fanName": "Fan Name",
+            "fanUrl": "Fan Url",
+            "fanAbout": "Fan About",
+            "fanIcon": "Fan Icon",
+            "fanThumbnail": "Fan Thumbnail",
+            "fanStatus": "Fan Status",
+            "memberList": "Member List",
+            "memberCount": "Member Count",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "fanpages" : {
+            "created": "Một Fanpages mới được tạo với định danh {{ param }}",
+            "updated": "Một Fanpages cập nhật với định danh {{ param }}",
+            "deleted": "Một Fanpages đã xóa với định danh {{ param }}"
+        }
+    }
+}

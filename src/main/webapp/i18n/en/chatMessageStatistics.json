@@ -1,0 +1,33 @@
+
+{
+    "gatewayApp": {
+        "chatMessageStatistics" : {
+            "home": {
+                "title": "Chat Message Statistics",
+                "createLabel": "Create a new Chat Message Statistics",
+                "createOrEditLabel": "Create or edit a Chat Message Statistics"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Chat Message Statistics {{ id }}?"
+            },
+            "detail": {
+                "title": "Chat Message Statistics"
+            },
+            "seqId": "Seq Id",
+            "dayCount": "Day Count",
+            "monthCount": "Month Count",
+            "yearCount": "Year Count",
+            "inDay": "In Day",
+            "inMonth": "In Month",
+            "inYear": "In Year",
+            "status": "Status"
+        }
+    },
+    "chatserviceApp": {
+        "chatMessageStatistics" : {
+            "created": "A new Chat Message Statistics is created with identifier {{ param }}",
+            "updated": "A Chat Message Statistics is updated with identifier {{ param }}",
+            "deleted": "A Chat Message Statistics is deleted with identifier {{ param }}"
+        }
+    }
+}

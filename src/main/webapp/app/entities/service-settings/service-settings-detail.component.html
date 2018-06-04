@@ -1,0 +1,58 @@
+
+<div *ngIf="serviceSettings">
+    <h2><span jhiTranslate="gatewayApp.serviceSettings.detail.title">Service Settings</span> {{serviceSettings.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{serviceSettings.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.code">Code</span></dt>
+        <dd>
+            <span>{{serviceSettings.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.values">Values</span></dt>
+        <dd>
+            <span>{{serviceSettings.values}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{serviceSettings.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{serviceSettings.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.createdUnixTime">Created Unix Time</span></dt>
+        <dd>
+            <span>{{serviceSettings.createdUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{serviceSettings.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{serviceSettings.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.serviceSettings.lastModifiedUnixTime">Last Modified Unix Time</span></dt>
+        <dd>
+            <span>{{serviceSettings.lastModifiedUnixTime}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'service-settings/'+ serviceSettings.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

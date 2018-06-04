@@ -1,0 +1,36 @@
+
+{
+    "gatewayApp": {
+        "userSettings" : {
+            "home": {
+                "title": "User Settings",
+                "createLabel": "Create a new User Settings",
+                "createOrEditLabel": "Create or edit a User Settings"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete User Settings {{ id }}?"
+            },
+            "detail": {
+                "title": "User Settings"
+            },
+            "seqId": "Seq Id",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "priavateSettings": "Priavate Settings",
+            "socialSettings": "Social Settings",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time"
+        }
+    },
+    "chatserviceApp": {
+        "userSettings" : {
+            "created": "A new User Settings is created with identifier {{ param }}",
+            "updated": "A User Settings is updated with identifier {{ param }}",
+            "deleted": "A User Settings is deleted with identifier {{ param }}"
+        }
+    }
+}

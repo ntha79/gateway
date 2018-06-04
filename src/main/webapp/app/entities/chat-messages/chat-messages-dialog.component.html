@@ -1,0 +1,110 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myChatMessagesLabel" jhiTranslate="gatewayApp.chatMessages.home.createOrEditLabel">Create or edit a Chat Messages</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!chatMessages.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="chatMessages.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.messageId" for="field_messageId">Message Id</label>
+            <input type="text" class="form-control" name="messageId" id="field_messageId"
+                [(ngModel)]="chatMessages.messageId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.groupChatId" for="field_groupChatId">Group Chat Id</label>
+            <input type="number" class="form-control" name="groupChatId" id="field_groupChatId"
+                [(ngModel)]="chatMessages.groupChatId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.groupType" for="field_groupType">Group Type</label>
+            <select class="form-control" name="groupType" [(ngModel)]="chatMessages.groupType" id="field_groupType" >
+                <option value="PUBLIC">{{'gatewayApp.GroupType.PUBLIC' | translate}}</option>
+                <option value="FANPAGE">{{'gatewayApp.GroupType.FANPAGE' | translate}}</option>
+                <option value="SECRET">{{'gatewayApp.GroupType.SECRET' | translate}}</option>
+                <option value="NORMAL">{{'gatewayApp.GroupType.NORMAL' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.messageValue" for="field_messageValue">Message Value</label>
+            <input type="text" class="form-control" name="messageValue" id="field_messageValue"
+                [(ngModel)]="chatMessages.messageValue" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.messageType" for="field_messageType">Message Type</label>
+            <select class="form-control" name="messageType" [(ngModel)]="chatMessages.messageType" id="field_messageType" >
+                <option value="TEXT">{{'gatewayApp.ChatMessageType.TEXT' | translate}}</option>
+                <option value="FILE">{{'gatewayApp.ChatMessageType.FILE' | translate}}</option>
+                <option value="QRCODE">{{'gatewayApp.ChatMessageType.QRCODE' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.senderId" for="field_senderId">Sender Id</label>
+            <input type="number" class="form-control" name="senderId" id="field_senderId"
+                [(ngModel)]="chatMessages.senderId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.senderLogin" for="field_senderLogin">Sender Login</label>
+            <input type="text" class="form-control" name="senderLogin" id="field_senderLogin"
+                [(ngModel)]="chatMessages.senderLogin" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.receiverLists" for="field_receiverLists">Receiver Lists</label>
+            <input type="text" class="form-control" name="receiverLists" id="field_receiverLists"
+                [(ngModel)]="chatMessages.receiverLists" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.receiverType" for="field_receiverType">Receiver Type</label>
+            <select class="form-control" name="receiverType" [(ngModel)]="chatMessages.receiverType" id="field_receiverType" >
+                <option value="PUBLIC">{{'gatewayApp.ReceiverType.PUBLIC' | translate}}</option>
+                <option value="FANPAGE">{{'gatewayApp.ReceiverType.FANPAGE' | translate}}</option>
+                <option value="FRIEND">{{'gatewayApp.ReceiverType.FRIEND' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.receiverText" for="field_receiverText">Receiver Text</label>
+            <input type="text" class="form-control" name="receiverText" id="field_receiverText"
+                [(ngModel)]="chatMessages.receiverText" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.createUnixTime" for="field_createUnixTime">Create Unix Time</label>
+            <input type="number" class="form-control" name="createUnixTime" id="field_createUnixTime"
+                [(ngModel)]="chatMessages.createUnixTime" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.updateUnixTime" for="field_updateUnixTime">Update Unix Time</label>
+            <input type="number" class="form-control" name="updateUnixTime" id="field_updateUnixTime"
+                [(ngModel)]="chatMessages.updateUnixTime" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.reportDay" for="field_reportDay">Report Day</label>
+            <input type="number" class="form-control" name="reportDay" id="field_reportDay"
+                [(ngModel)]="chatMessages.reportDay" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.maxTimeToAction" for="field_maxTimeToAction">Max Time To Action</label>
+            <input type="number" class="form-control" name="maxTimeToAction" id="field_maxTimeToAction"
+                [(ngModel)]="chatMessages.maxTimeToAction" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.referMessageId" for="field_referMessageId">Refer Message Id</label>
+            <input type="number" class="form-control" name="referMessageId" id="field_referMessageId"
+                [(ngModel)]="chatMessages.referMessageId" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

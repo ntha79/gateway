@@ -1,0 +1,9 @@
+{
+    "gatewayApp": {
+        "CheckStatus" : {
+            "null": "",
+            "NOTCHECK": "NOTCHECK",
+            "CHECKED": "CHECKED"
+        }
+    }
+}

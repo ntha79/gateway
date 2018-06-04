@@ -1,0 +1,70 @@
+
+<div *ngIf="contacts">
+    <h2><span jhiTranslate="gatewayApp.contacts.detail.title">Contacts</span> {{contacts.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.contacts.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{contacts.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.ownerId">Owner Id</span></dt>
+        <dd>
+            <span>{{contacts.ownerId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.ownerLogin">Owner Login</span></dt>
+        <dd>
+            <span>{{contacts.ownerLogin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.contactLists">Contact Lists</span></dt>
+        <dd>
+            <span>{{contacts.contactLists}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.contactCount">Contact Count</span></dt>
+        <dd>
+            <span>{{contacts.contactCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{contacts.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{contacts.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.createdUnixTime">Created Unix Time</span></dt>
+        <dd>
+            <span>{{contacts.createdUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{contacts.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{contacts.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.lastModifiedUnixTime">Last Modified Unix Time</span></dt>
+        <dd>
+            <span>{{contacts.lastModifiedUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.contacts.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{contacts.reportDay}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

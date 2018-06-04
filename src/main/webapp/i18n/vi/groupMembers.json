@@ -1,0 +1,44 @@
+
+{
+    "gatewayApp": {
+        "groupMembers" : {
+            "home": {
+                "title": "Group Members",
+                "createLabel": "Thêm mới một Group Members",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Group Members"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Group Members {{ id }}?"
+            },
+            "detail": {
+                "title": "Group Members"
+            },
+            "groupId": "Group Id",
+            "groupType": "Group Type",
+            "groupName": "Group Name",
+            "groupIcon": "Group Icon",
+            "groupSlogan": "Group Slogan",
+            "groupStatus": "Group Status",
+            "ownerId": "Owner Id",
+            "ownerLogin": "Owner Login",
+            "memberLists": "Member Lists",
+            "maxMember": "Max Member",
+            "memberCount": "Member Count",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "createdUnixTime": "Created Unix Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
+            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "lastChatUnixTime": "Last Chat Unix Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "groupMembers" : {
+            "created": "Một Group Members mới được tạo với định danh {{ param }}",
+            "updated": "Một Group Members cập nhật với định danh {{ param }}",
+            "deleted": "Một Group Members đã xóa với định danh {{ param }}"
+        }
+    }
+}

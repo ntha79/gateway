@@ -1,0 +1,33 @@
+
+{
+    "gatewayApp": {
+        "fanpageStatistics" : {
+            "home": {
+                "title": "Fanpage Statistics",
+                "createLabel": "Create a new Fanpage Statistics",
+                "createOrEditLabel": "Create or edit a Fanpage Statistics"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Fanpage Statistics {{ id }}?"
+            },
+            "detail": {
+                "title": "Fanpage Statistics"
+            },
+            "seqId": "Seq Id",
+            "dayCount": "Day Count",
+            "monthCount": "Month Count",
+            "yearCount": "Year Count",
+            "inDay": "In Day",
+            "inMonth": "In Month",
+            "inYear": "In Year",
+            "status": "Status"
+        }
+    },
+    "chatserviceApp": {
+        "fanpageStatistics" : {
+            "created": "A new Fanpage Statistics is created with identifier {{ param }}",
+            "updated": "A Fanpage Statistics is updated with identifier {{ param }}",
+            "deleted": "A Fanpage Statistics is deleted with identifier {{ param }}"
+        }
+    }
+}

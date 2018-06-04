@@ -1,0 +1,82 @@
+
+<div *ngIf="chatMessages">
+    <h2><span jhiTranslate="gatewayApp.chatMessages.detail.title">Chat Messages</span> {{chatMessages.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.chatMessages.messageId">Message Id</span></dt>
+        <dd>
+            <span>{{chatMessages.messageId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.groupChatId">Group Chat Id</span></dt>
+        <dd>
+            <span>{{chatMessages.groupChatId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.groupType">Group Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.GroupType.' + chatMessages.groupType}}">{{chatMessages.groupType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.messageValue">Message Value</span></dt>
+        <dd>
+            <span>{{chatMessages.messageValue}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.messageType">Message Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.ChatMessageType.' + chatMessages.messageType}}">{{chatMessages.messageType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.senderId">Sender Id</span></dt>
+        <dd>
+            <span>{{chatMessages.senderId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.senderLogin">Sender Login</span></dt>
+        <dd>
+            <span>{{chatMessages.senderLogin}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.receiverLists">Receiver Lists</span></dt>
+        <dd>
+            <span>{{chatMessages.receiverLists}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.receiverType">Receiver Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.ReceiverType.' + chatMessages.receiverType}}">{{chatMessages.receiverType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.receiverText">Receiver Text</span></dt>
+        <dd>
+            <span>{{chatMessages.receiverText}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.createUnixTime">Create Unix Time</span></dt>
+        <dd>
+            <span>{{chatMessages.createUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.updateUnixTime">Update Unix Time</span></dt>
+        <dd>
+            <span>{{chatMessages.updateUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{chatMessages.reportDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.maxTimeToAction">Max Time To Action</span></dt>
+        <dd>
+            <span>{{chatMessages.maxTimeToAction}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.referMessageId">Refer Message Id</span></dt>
+        <dd>
+            <span>{{chatMessages.referMessageId}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'chat-messages/'+ chatMessages.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
