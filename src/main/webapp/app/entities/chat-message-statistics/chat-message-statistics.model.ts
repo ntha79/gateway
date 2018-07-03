@@ -1,6 +1,6 @@
 import { BaseEntity } from './../../shared';
 
-export const enum CheckStatus {
+export const enum CheckStatusEnum {
     'NOTCHECK',
     'CHECKED'
 }
@@ -15,7 +15,7 @@ export class ChatMessageStatistics implements BaseEntity {
         public inDay?: number,
         public inMonth?: number,
         public inYear?: number,
-        public status?: CheckStatus,
+        public status?: CheckStatusEnum,
     ) {
     }
 }
