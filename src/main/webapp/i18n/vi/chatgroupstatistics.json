@@ -1,0 +1,33 @@
+
+{
+    "gatewayApp": {
+        "chatGroupStatistics" : {
+            "home": {
+                "title": "Chat Group Statistics",
+                "createLabel": "Thêm mới một Chat Group Statistics",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Chat Group Statistics"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Chat Group Statistics {{ id }}?"
+            },
+            "detail": {
+                "title": "Chat Group Statistics"
+            },
+            "seqId": "Seq Id",
+            "dayCount": "Day Count",
+            "monthCount": "Month Count",
+            "yearCount": "Year Count",
+            "inDay": "In Day",
+            "inMonth": "In Month",
+            "inYear": "In Year",
+            "status": "Status"
+        }
+    },
+    "chatserviceApp": {
+        "chatGroupStatistics" : {
+            "created": "Một Chat Group Statistics mới được tạo với định danh {{ param }}",
+            "updated": "Một Chat Group Statistics cập nhật với định danh {{ param }}",
+            "deleted": "Một Chat Group Statistics đã xóa với định danh {{ param }}"
+        }
+    }
+}

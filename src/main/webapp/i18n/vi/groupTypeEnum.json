@@ -1,0 +1,11 @@
+{
+    "gatewayApp": {
+        "GroupTypeEnum" : {
+            "null": "",
+            "PUBLIC": "PUBLIC",
+            "FANPAGE": "FANPAGE",
+            "SECRET": "SECRET",
+            "PEERTOPEER": "PEERTOPEER"
+        }
+    }
+}

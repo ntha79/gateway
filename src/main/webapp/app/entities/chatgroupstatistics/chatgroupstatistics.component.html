@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.chatgroupstatistics.home.title">Chatgroupstatistics</span>
+        <button class="btn btn-primary float-right jh-create-entity create-chatgroupstatistics" [routerLink]="['/', { outlets: { popup: ['chatgroupstatistics-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="gatewayApp.chatgroupstatistics.home.createLabel">
+            Create new Chatgroupstatistics
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="chatgroupstatistics">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="seqId"><span jhiTranslate="gatewayApp.chatgroupstatistics.seqId">Seq Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dayCount"><span jhiTranslate="gatewayApp.chatgroupstatistics.dayCount">Day Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="monthCount"><span jhiTranslate="gatewayApp.chatgroupstatistics.monthCount">Month Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="yearCount"><span jhiTranslate="gatewayApp.chatgroupstatistics.yearCount">Year Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="inDay"><span jhiTranslate="gatewayApp.chatgroupstatistics.inDay">In Day</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="inMonth"><span jhiTranslate="gatewayApp.chatgroupstatistics.inMonth">In Month</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="inYear"><span jhiTranslate="gatewayApp.chatgroupstatistics.inYear">In Year</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="gatewayApp.chatgroupstatistics.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let chatgroupstatistics of chatgroupstatistics ;trackBy: trackId">
+                <td><a [routerLink]="['../chatgroupstatistics', chatgroupstatistics.id ]">{{chatgroupstatistics.id}}</a></td>
+                <td>{{chatgroupstatistics.seqId}}</td>
+                <td>{{chatgroupstatistics.dayCount}}</td>
+                <td>{{chatgroupstatistics.monthCount}}</td>
+                <td>{{chatgroupstatistics.yearCount}}</td>
+                <td>{{chatgroupstatistics.inDay}}</td>
+                <td>{{chatgroupstatistics.inMonth}}</td>
+                <td>{{chatgroupstatistics.inYear}}</td>
+                <td jhiTranslate="{{'gatewayApp.CheckStatusEnum.' + chatgroupstatistics.status}}">{{chatgroupstatistics.status}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../chatgroupstatistics', chatgroupstatistics.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'chatgroupstatistics/'+ chatgroupstatistics.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'chatgroupstatistics/'+ chatgroupstatistics.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="chatgroupstatistics && chatgroupstatistics.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

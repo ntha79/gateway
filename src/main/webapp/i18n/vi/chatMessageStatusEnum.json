@@ -1,0 +1,14 @@
+{
+    "gatewayApp": {
+        "ChatMessageStatusEnum" : {
+            "null": "",
+            "UNKNOW": "UNKNOW",
+            "NOTRECEIVED": "NOTRECEIVED",
+            "RECEIVED": "RECEIVED",
+            "UNREAD": "UNREAD",
+            "READED": "READED",
+            "EDITED": "EDITED",
+            "PINING": "PINING"
+        }
+    }
+}

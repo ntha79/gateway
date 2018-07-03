@@ -1,0 +1,96 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.chatgroups.home.title">Chatgroups</span>
+        <button class="btn btn-primary float-right jh-create-entity create-chatgroups" [routerLink]="['/', { outlets: { popup: ['chatgroups-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="gatewayApp.chatgroups.home.createLabel">
+            Create new Chatgroups
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="chatgroups">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupId"><span jhiTranslate="gatewayApp.chatgroups.groupId">Group Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupType"><span jhiTranslate="gatewayApp.chatgroups.groupType">Group Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupName"><span jhiTranslate="gatewayApp.chatgroups.groupName">Group Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupIcon"><span jhiTranslate="gatewayApp.chatgroups.groupIcon">Group Icon</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupBackground"><span jhiTranslate="gatewayApp.chatgroups.groupBackground">Group Background</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupSlogan"><span jhiTranslate="gatewayApp.chatgroups.groupSlogan">Group Slogan</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupSumary"><span jhiTranslate="gatewayApp.chatgroups.groupSumary">Group Sumary</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="groupStatus"><span jhiTranslate="gatewayApp.chatgroups.groupStatus">Group Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="memberLists"><span jhiTranslate="gatewayApp.chatgroups.memberLists">Member Lists</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="maxMember"><span jhiTranslate="gatewayApp.chatgroups.maxMember">Max Member</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdById"><span jhiTranslate="gatewayApp.chatgroups.createdById">Created By Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="gatewayApp.chatgroups.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdTime"><span jhiTranslate="gatewayApp.chatgroups.createdTime">Created Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="gatewayApp.chatgroups.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedTime"><span jhiTranslate="gatewayApp.chatgroups.lastModifiedTime">Last Modified Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reportDay"><span jhiTranslate="gatewayApp.chatgroups.reportDay">Report Day</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let chatgroups of chatgroups ;trackBy: trackId">
+                <td><a [routerLink]="['../chatgroups', chatgroups.id ]">{{chatgroups.id}}</a></td>
+                <td>{{chatgroups.groupId}}</td>
+                <td jhiTranslate="{{'gatewayApp.GroupTypeEnum.' + chatgroups.groupType}}">{{chatgroups.groupType}}</td>
+                <td>{{chatgroups.groupName}}</td>
+                <td>{{chatgroups.groupIcon}}</td>
+                <td>{{chatgroups.groupBackground}}</td>
+                <td>{{chatgroups.groupSlogan}}</td>
+                <td>{{chatgroups.groupSumary}}</td>
+                <td jhiTranslate="{{'gatewayApp.GroupMemberStatusEnum.' + chatgroups.groupStatus}}">{{chatgroups.groupStatus}}</td>
+                <td>{{chatgroups.memberLists}}</td>
+                <td>{{chatgroups.maxMember}}</td>
+                <td>{{chatgroups.createdById}}</td>
+                <td>{{chatgroups.createdBy}}</td>
+                <td>{{chatgroups.createdTime}}</td>
+                <td>{{chatgroups.lastModifiedBy}}</td>
+                <td>{{chatgroups.lastModifiedTime}}</td>
+                <td>{{chatgroups.reportDay}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../chatgroups', chatgroups.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'chatgroups/'+ chatgroups.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'chatgroups/'+ chatgroups.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="chatgroups && chatgroups.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

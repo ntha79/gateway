@@ -1,0 +1,13 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20180604034450",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "fanpages",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "chatservice",
+    "searchEngine": false
+}

@@ -1,0 +1,9 @@
+{
+    "gatewayApp": {
+        "CheckStatusEnum" : {
+            "null": "",
+            "NOTCHECK": "NOTCHECK",
+            "CHECKED": "CHECKED"
+        }
+    }
+}

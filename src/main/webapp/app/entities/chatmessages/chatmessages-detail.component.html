@@ -1,0 +1,110 @@
+
+<div *ngIf="chatmessages">
+    <h2><span jhiTranslate="gatewayApp.chatmessages.detail.title">Chatmessages</span> {{chatmessages.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.chatmessages.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{chatmessages.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.messageId">Message Id</span></dt>
+        <dd>
+            <span>{{chatmessages.messageId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.groupChatId">Group Chat Id</span></dt>
+        <dd>
+            <span>{{chatmessages.groupChatId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.groupType">Group Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.GroupTypeEnum.' + chatmessages.groupType}}">{{chatmessages.groupType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.messageValue">Message Value</span></dt>
+        <dd>
+            <span>{{chatmessages.messageValue}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.messageType">Message Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.ChatMessageTypeEnum.' + chatmessages.messageType}}">{{chatmessages.messageType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.messageStatus">Message Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.ChatMessageStatusEnum.' + chatmessages.messageStatus}}">{{chatmessages.messageStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.ownerUserName">Owner User Name</span></dt>
+        <dd>
+            <span>{{chatmessages.ownerUserName}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.fromUserId">From User Id</span></dt>
+        <dd>
+            <span>{{chatmessages.fromUserId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.fromUserName">From User Name</span></dt>
+        <dd>
+            <span>{{chatmessages.fromUserName}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.fromFullName">From Full Name</span></dt>
+        <dd>
+            <span>{{chatmessages.fromFullName}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.toUserId">To User Id</span></dt>
+        <dd>
+            <span>{{chatmessages.toUserId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.toUserName">To User Name</span></dt>
+        <dd>
+            <span>{{chatmessages.toUserName}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.createdUnixTime">Created Unix Time</span></dt>
+        <dd>
+            <span>{{chatmessages.createdUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.sendTime">Send Time</span></dt>
+        <dd>
+            <span>{{chatmessages.sendTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.readTime">Read Time</span></dt>
+        <dd>
+            <span>{{chatmessages.readTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{chatmessages.createdTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{chatmessages.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.lastModifiedTime">Last Modified Time</span></dt>
+        <dd>
+            <span>{{chatmessages.lastModifiedTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.maxSecondToAction">Max Second To Action</span></dt>
+        <dd>
+            <span>{{chatmessages.maxSecondToAction}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{chatmessages.reportDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatmessages.likeCount">Like Count</span></dt>
+        <dd>
+            <span>{{chatmessages.likeCount}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'chatmessages/'+ chatmessages.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

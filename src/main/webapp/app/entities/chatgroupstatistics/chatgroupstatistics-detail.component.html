@@ -1,0 +1,54 @@
+
+<div *ngIf="chatgroupstatistics">
+    <h2><span jhiTranslate="gatewayApp.chatgroupstatistics.detail.title">Chatgroupstatistics</span> {{chatgroupstatistics.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.chatgroupstatistics.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{chatgroupstatistics.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatgroupstatistics.dayCount">Day Count</span></dt>
+        <dd>
+            <span>{{chatgroupstatistics.dayCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatgroupstatistics.monthCount">Month Count</span></dt>
+        <dd>
+            <span>{{chatgroupstatistics.monthCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatgroupstatistics.yearCount">Year Count</span></dt>
+        <dd>
+            <span>{{chatgroupstatistics.yearCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatgroupstatistics.inDay">In Day</span></dt>
+        <dd>
+            <span>{{chatgroupstatistics.inDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatgroupstatistics.inMonth">In Month</span></dt>
+        <dd>
+            <span>{{chatgroupstatistics.inMonth}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatgroupstatistics.inYear">In Year</span></dt>
+        <dd>
+            <span>{{chatgroupstatistics.inYear}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatgroupstatistics.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.CheckStatusEnum.' + chatgroupstatistics.status}}">{{chatgroupstatistics.status}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'chatgroupstatistics/'+ chatgroupstatistics.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

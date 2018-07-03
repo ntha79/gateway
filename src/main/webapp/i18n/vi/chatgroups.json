@@ -1,0 +1,41 @@
+
+{
+    "gatewayApp": {
+        "chatgroups" : {
+            "home": {
+                "title": "Chatgroups",
+                "createLabel": "Thêm mới một Chatgroups",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Chatgroups"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Chatgroups {{ id }}?"
+            },
+            "detail": {
+                "title": "Chatgroups"
+            },
+            "groupId": "Group Id",
+            "groupType": "Group Type",
+            "groupName": "Group Name",
+            "groupIcon": "Group Icon",
+            "groupBackground": "Group Background",
+            "groupSlogan": "Group Slogan",
+            "groupSumary": "Group Sumary",
+            "groupStatus": "Group Status",
+            "memberLists": "Member Lists",
+            "maxMember": "Max Member",
+            "createdById": "Created By Id",
+            "createdBy": "Created By",
+            "createdTime": "Created Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedTime": "Last Modified Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "chatgroups" : {
+            "created": "Một Chatgroups mới được tạo với định danh {{ param }}",
+            "updated": "Một Chatgroups cập nhật với định danh {{ param }}",
+            "deleted": "Một Chatgroups đã xóa với định danh {{ param }}"
+        }
+    }
+}

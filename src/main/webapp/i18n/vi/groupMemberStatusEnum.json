@@ -1,0 +1,11 @@
+{
+    "gatewayApp": {
+        "GroupMemberStatusEnum" : {
+            "null": "",
+            "INVITING": "INVITING",
+            "NORMAL": "NORMAL",
+            "BLOCKED": "BLOCKED",
+            "DELETED": "DELETED"
+        }
+    }
+}

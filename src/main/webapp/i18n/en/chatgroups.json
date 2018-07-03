@@ -1,0 +1,41 @@
+
+{
+    "gatewayApp": {
+        "chatgroups" : {
+            "home": {
+                "title": "Chatgroups",
+                "createLabel": "Create a new Chatgroups",
+                "createOrEditLabel": "Create or edit a Chatgroups"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Chatgroups {{ id }}?"
+            },
+            "detail": {
+                "title": "Chatgroups"
+            },
+            "groupId": "Group Id",
+            "groupType": "Group Type",
+            "groupName": "Group Name",
+            "groupIcon": "Group Icon",
+            "groupBackground": "Group Background",
+            "groupSlogan": "Group Slogan",
+            "groupSumary": "Group Sumary",
+            "groupStatus": "Group Status",
+            "memberLists": "Member Lists",
+            "maxMember": "Max Member",
+            "createdById": "Created By Id",
+            "createdBy": "Created By",
+            "createdTime": "Created Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedTime": "Last Modified Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "chatserviceApp": {
+        "chatgroups" : {
+            "created": "A new Chatgroups is created with identifier {{ param }}",
+            "updated": "A Chatgroups is updated with identifier {{ param }}",
+            "deleted": "A Chatgroups is deleted with identifier {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "gatewayApp": {
+        "ChatMessageTypeEnum" : {
+            "null": "",
+            "TEXT": "TEXT",
+            "FILE": "FILE",
+            "QRCODE": "QRCODE",
+            "EDIT": "EDIT"
+        }
+    }
+}

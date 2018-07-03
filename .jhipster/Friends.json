@@ -1,0 +1,13 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [],
+    "changelogDate": "20180604034444",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "friends",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "chatservice",
+    "searchEngine": false
+}

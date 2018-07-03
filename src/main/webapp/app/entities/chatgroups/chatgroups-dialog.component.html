@@ -1,0 +1,113 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myChatgroupsLabel" jhiTranslate="gatewayApp.chatgroups.home.createOrEditLabel">Create or edit a Chatgroups</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!chatgroups.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="chatgroups.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.groupId" for="field_groupId">Group Id</label>
+            <input type="text" class="form-control" name="groupId" id="field_groupId"
+                [(ngModel)]="chatgroups.groupId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.groupType" for="field_groupType">Group Type</label>
+            <select class="form-control" name="groupType" [(ngModel)]="chatgroups.groupType" id="field_groupType" >
+                <option value="PUBLIC">{{'gatewayApp.GroupTypeEnum.PUBLIC' | translate}}</option>
+                <option value="FANPAGE">{{'gatewayApp.GroupTypeEnum.FANPAGE' | translate}}</option>
+                <option value="SECRET">{{'gatewayApp.GroupTypeEnum.SECRET' | translate}}</option>
+                <option value="PEERTOPEER">{{'gatewayApp.GroupTypeEnum.PEERTOPEER' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.groupName" for="field_groupName">Group Name</label>
+            <input type="text" class="form-control" name="groupName" id="field_groupName"
+                [(ngModel)]="chatgroups.groupName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.groupIcon" for="field_groupIcon">Group Icon</label>
+            <input type="text" class="form-control" name="groupIcon" id="field_groupIcon"
+                [(ngModel)]="chatgroups.groupIcon" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.groupBackground" for="field_groupBackground">Group Background</label>
+            <input type="text" class="form-control" name="groupBackground" id="field_groupBackground"
+                [(ngModel)]="chatgroups.groupBackground" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.groupSlogan" for="field_groupSlogan">Group Slogan</label>
+            <input type="text" class="form-control" name="groupSlogan" id="field_groupSlogan"
+                [(ngModel)]="chatgroups.groupSlogan" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.groupSumary" for="field_groupSumary">Group Sumary</label>
+            <input type="text" class="form-control" name="groupSumary" id="field_groupSumary"
+                [(ngModel)]="chatgroups.groupSumary" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.groupStatus" for="field_groupStatus">Group Status</label>
+            <select class="form-control" name="groupStatus" [(ngModel)]="chatgroups.groupStatus" id="field_groupStatus" >
+                <option value="INVITING">{{'gatewayApp.GroupMemberStatusEnum.INVITING' | translate}}</option>
+                <option value="NORMAL">{{'gatewayApp.GroupMemberStatusEnum.NORMAL' | translate}}</option>
+                <option value="BLOCKED">{{'gatewayApp.GroupMemberStatusEnum.BLOCKED' | translate}}</option>
+                <option value="DELETED">{{'gatewayApp.GroupMemberStatusEnum.DELETED' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.memberLists" for="field_memberLists">Member Lists</label>
+            <input type="text" class="form-control" name="memberLists" id="field_memberLists"
+                [(ngModel)]="chatgroups.memberLists" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.maxMember" for="field_maxMember">Max Member</label>
+            <input type="number" class="form-control" name="maxMember" id="field_maxMember"
+                [(ngModel)]="chatgroups.maxMember" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.createdById" for="field_createdById">Created By Id</label>
+            <input type="number" class="form-control" name="createdById" id="field_createdById"
+                [(ngModel)]="chatgroups.createdById" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="chatgroups.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.createdTime" for="field_createdTime">Created Time</label>
+            <input type="number" class="form-control" name="createdTime" id="field_createdTime"
+                [(ngModel)]="chatgroups.createdTime" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="chatgroups.lastModifiedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.lastModifiedTime" for="field_lastModifiedTime">Last Modified Time</label>
+            <input type="number" class="form-control" name="lastModifiedTime" id="field_lastModifiedTime"
+                [(ngModel)]="chatgroups.lastModifiedTime" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroups.reportDay" for="field_reportDay">Report Day</label>
+            <input type="number" class="form-control" name="reportDay" id="field_reportDay"
+                [(ngModel)]="chatgroups.reportDay" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

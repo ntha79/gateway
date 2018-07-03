@@ -1,0 +1,67 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myChatgroupstatisticsLabel" jhiTranslate="gatewayApp.chatgroupstatistics.home.createOrEditLabel">Create or edit a Chatgroupstatistics</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!chatgroupstatistics.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="chatgroupstatistics.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.seqId" for="field_seqId">Seq Id</label>
+            <input type="text" class="form-control" name="seqId" id="field_seqId"
+                [(ngModel)]="chatgroupstatistics.seqId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.dayCount" for="field_dayCount">Day Count</label>
+            <input type="number" class="form-control" name="dayCount" id="field_dayCount"
+                [(ngModel)]="chatgroupstatistics.dayCount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.monthCount" for="field_monthCount">Month Count</label>
+            <input type="number" class="form-control" name="monthCount" id="field_monthCount"
+                [(ngModel)]="chatgroupstatistics.monthCount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.yearCount" for="field_yearCount">Year Count</label>
+            <input type="number" class="form-control" name="yearCount" id="field_yearCount"
+                [(ngModel)]="chatgroupstatistics.yearCount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.inDay" for="field_inDay">In Day</label>
+            <input type="number" class="form-control" name="inDay" id="field_inDay"
+                [(ngModel)]="chatgroupstatistics.inDay" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.inMonth" for="field_inMonth">In Month</label>
+            <input type="number" class="form-control" name="inMonth" id="field_inMonth"
+                [(ngModel)]="chatgroupstatistics.inMonth" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.inYear" for="field_inYear">In Year</label>
+            <input type="number" class="form-control" name="inYear" id="field_inYear"
+                [(ngModel)]="chatgroupstatistics.inYear" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="chatgroupstatistics.status" id="field_status" >
+                <option value="NOTCHECK">{{'gatewayApp.CheckStatusEnum.NOTCHECK' | translate}}</option>
+                <option value="CHECKED">{{'gatewayApp.CheckStatusEnum.CHECKED' | translate}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
