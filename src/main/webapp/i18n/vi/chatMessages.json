@@ -13,21 +13,28 @@
             "detail": {
                 "title": "Chat Messages"
             },
+            "seqId": "Seq Id",
             "messageId": "Message Id",
             "groupChatId": "Group Chat Id",
             "groupType": "Group Type",
             "messageValue": "Message Value",
             "messageType": "Message Type",
-            "senderId": "Sender Id",
-            "senderLogin": "Sender Login",
-            "receiverLists": "Receiver Lists",
-            "receiverType": "Receiver Type",
-            "receiverText": "Receiver Text",
-            "createUnixTime": "Create Unix Time",
-            "updateUnixTime": "Update Unix Time",
+            "messageStatus": "Message Status",
+            "ownerUserName": "Owner User Name",
+            "fromUserId": "From User Id",
+            "fromUserName": "From User Name",
+            "fromFullName": "From Full Name",
+            "toUserId": "To User Id",
+            "toUserName": "To User Name",
+            "createdUnixTime": "Created Unix Time",
+            "sendTime": "Send Time",
+            "readTime": "Read Time",
+            "createdTime": "Created Time",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedTime": "Last Modified Time",
+            "maxSecondToAction": "Max Second To Action",
             "reportDay": "Report Day",
-            "maxTimeToAction": "Max Time To Action",
-            "referMessageId": "Refer Message Id"
+            "likeCount": "Like Count"
         }
     },
     "chatserviceApp": {

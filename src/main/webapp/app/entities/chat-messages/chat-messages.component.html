@@ -17,42 +17,56 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="seqId"><span jhiTranslate="gatewayApp.chatMessages.seqId">Seq Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="messageId"><span jhiTranslate="gatewayApp.chatMessages.messageId">Message Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="groupChatId"><span jhiTranslate="gatewayApp.chatMessages.groupChatId">Group Chat Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="groupType"><span jhiTranslate="gatewayApp.chatMessages.groupType">Group Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="messageValue"><span jhiTranslate="gatewayApp.chatMessages.messageValue">Message Value</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="messageType"><span jhiTranslate="gatewayApp.chatMessages.messageType">Message Type</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="senderId"><span jhiTranslate="gatewayApp.chatMessages.senderId">Sender Id</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="senderLogin"><span jhiTranslate="gatewayApp.chatMessages.senderLogin">Sender Login</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="receiverLists"><span jhiTranslate="gatewayApp.chatMessages.receiverLists">Receiver Lists</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="receiverType"><span jhiTranslate="gatewayApp.chatMessages.receiverType">Receiver Type</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="receiverText"><span jhiTranslate="gatewayApp.chatMessages.receiverText">Receiver Text</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="createUnixTime"><span jhiTranslate="gatewayApp.chatMessages.createUnixTime">Create Unix Time</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="updateUnixTime"><span jhiTranslate="gatewayApp.chatMessages.updateUnixTime">Update Unix Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="messageStatus"><span jhiTranslate="gatewayApp.chatMessages.messageStatus">Message Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ownerUserName"><span jhiTranslate="gatewayApp.chatMessages.ownerUserName">Owner User Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fromUserId"><span jhiTranslate="gatewayApp.chatMessages.fromUserId">From User Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fromUserName"><span jhiTranslate="gatewayApp.chatMessages.fromUserName">From User Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fromFullName"><span jhiTranslate="gatewayApp.chatMessages.fromFullName">From Full Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="toUserId"><span jhiTranslate="gatewayApp.chatMessages.toUserId">To User Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="toUserName"><span jhiTranslate="gatewayApp.chatMessages.toUserName">To User Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdUnixTime"><span jhiTranslate="gatewayApp.chatMessages.createdUnixTime">Created Unix Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sendTime"><span jhiTranslate="gatewayApp.chatMessages.sendTime">Send Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="readTime"><span jhiTranslate="gatewayApp.chatMessages.readTime">Read Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdTime"><span jhiTranslate="gatewayApp.chatMessages.createdTime">Created Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="gatewayApp.chatMessages.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedTime"><span jhiTranslate="gatewayApp.chatMessages.lastModifiedTime">Last Modified Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="maxSecondToAction"><span jhiTranslate="gatewayApp.chatMessages.maxSecondToAction">Max Second To Action</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="reportDay"><span jhiTranslate="gatewayApp.chatMessages.reportDay">Report Day</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="maxTimeToAction"><span jhiTranslate="gatewayApp.chatMessages.maxTimeToAction">Max Time To Action</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="referMessageId"><span jhiTranslate="gatewayApp.chatMessages.referMessageId">Refer Message Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="likeCount"><span jhiTranslate="gatewayApp.chatMessages.likeCount">Like Count</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let chatMessages of chatMessages ;trackBy: trackId">
                 <td><a [routerLink]="['../chat-messages', chatMessages.id ]">{{chatMessages.id}}</a></td>
+                <td>{{chatMessages.seqId}}</td>
                 <td>{{chatMessages.messageId}}</td>
                 <td>{{chatMessages.groupChatId}}</td>
-                <td jhiTranslate="{{'gatewayApp.GroupType.' + chatMessages.groupType}}">{{chatMessages.groupType}}</td>
+                <td jhiTranslate="{{'gatewayApp.GroupTypeEnum.' + chatMessages.groupType}}">{{chatMessages.groupType}}</td>
                 <td>{{chatMessages.messageValue}}</td>
-                <td jhiTranslate="{{'gatewayApp.ChatMessageType.' + chatMessages.messageType}}">{{chatMessages.messageType}}</td>
-                <td>{{chatMessages.senderId}}</td>
-                <td>{{chatMessages.senderLogin}}</td>
-                <td>{{chatMessages.receiverLists}}</td>
-                <td jhiTranslate="{{'gatewayApp.ReceiverType.' + chatMessages.receiverType}}">{{chatMessages.receiverType}}</td>
-                <td>{{chatMessages.receiverText}}</td>
-                <td>{{chatMessages.createUnixTime}}</td>
-                <td>{{chatMessages.updateUnixTime}}</td>
+                <td jhiTranslate="{{'gatewayApp.ChatMessageTypeEnum.' + chatMessages.messageType}}">{{chatMessages.messageType}}</td>
+                <td jhiTranslate="{{'gatewayApp.ChatMessageStatusEnum.' + chatMessages.messageStatus}}">{{chatMessages.messageStatus}}</td>
+                <td>{{chatMessages.ownerUserName}}</td>
+                <td>{{chatMessages.fromUserId}}</td>
+                <td>{{chatMessages.fromUserName}}</td>
+                <td>{{chatMessages.fromFullName}}</td>
+                <td>{{chatMessages.toUserId}}</td>
+                <td>{{chatMessages.toUserName}}</td>
+                <td>{{chatMessages.createdUnixTime}}</td>
+                <td>{{chatMessages.sendTime}}</td>
+                <td>{{chatMessages.readTime}}</td>
+                <td>{{chatMessages.createdTime}}</td>
+                <td>{{chatMessages.lastModifiedBy}}</td>
+                <td>{{chatMessages.lastModifiedTime}}</td>
+                <td>{{chatMessages.maxSecondToAction}}</td>
                 <td>{{chatMessages.reportDay}}</td>
-                <td>{{chatMessages.maxTimeToAction}}</td>
-                <td>{{chatMessages.referMessageId}}</td>
+                <td>{{chatMessages.likeCount}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

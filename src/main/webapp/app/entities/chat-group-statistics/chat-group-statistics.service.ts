@@ -11,7 +11,7 @@ export type EntityResponseType = HttpResponse<ChatGroupStatistics>;
 @Injectable()
 export class ChatGroupStatisticsService {
 
-    private resourceUrl =  SERVER_API_URL + 'chatservice/api/chat-group-statistics';
+    private resourceUrl =  SERVER_API_URL + 'chatservice/api/chatgroupstatistics';
 
     constructor(private http: HttpClient) { }
 

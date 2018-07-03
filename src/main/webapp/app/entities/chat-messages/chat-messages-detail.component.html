@@ -4,6 +4,10 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.chatMessages.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{chatMessages.seqId}}</span>
+        </dd>
         <dt><span jhiTranslate="gatewayApp.chatMessages.messageId">Message Id</span></dt>
         <dd>
             <span>{{chatMessages.messageId}}</span>
@@ -14,7 +18,7 @@
         </dd>
         <dt><span jhiTranslate="gatewayApp.chatMessages.groupType">Group Type</span></dt>
         <dd>
-            <span jhiTranslate="{{'gatewayApp.GroupType.' + chatMessages.groupType}}">{{chatMessages.groupType}}</span>
+            <span jhiTranslate="{{'gatewayApp.GroupTypeEnum.' + chatMessages.groupType}}">{{chatMessages.groupType}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.chatMessages.messageValue">Message Value</span></dt>
         <dd>
@@ -22,47 +26,71 @@
         </dd>
         <dt><span jhiTranslate="gatewayApp.chatMessages.messageType">Message Type</span></dt>
         <dd>
-            <span jhiTranslate="{{'gatewayApp.ChatMessageType.' + chatMessages.messageType}}">{{chatMessages.messageType}}</span>
+            <span jhiTranslate="{{'gatewayApp.ChatMessageTypeEnum.' + chatMessages.messageType}}">{{chatMessages.messageType}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.senderId">Sender Id</span></dt>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.messageStatus">Message Status</span></dt>
         <dd>
-            <span>{{chatMessages.senderId}}</span>
+            <span jhiTranslate="{{'gatewayApp.ChatMessageStatusEnum.' + chatMessages.messageStatus}}">{{chatMessages.messageStatus}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.senderLogin">Sender Login</span></dt>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.ownerUserName">Owner User Name</span></dt>
         <dd>
-            <span>{{chatMessages.senderLogin}}</span>
+            <span>{{chatMessages.ownerUserName}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.receiverLists">Receiver Lists</span></dt>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.fromUserId">From User Id</span></dt>
         <dd>
-            <span>{{chatMessages.receiverLists}}</span>
+            <span>{{chatMessages.fromUserId}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.receiverType">Receiver Type</span></dt>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.fromUserName">From User Name</span></dt>
         <dd>
-            <span jhiTranslate="{{'gatewayApp.ReceiverType.' + chatMessages.receiverType}}">{{chatMessages.receiverType}}</span>
+            <span>{{chatMessages.fromUserName}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.receiverText">Receiver Text</span></dt>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.fromFullName">From Full Name</span></dt>
         <dd>
-            <span>{{chatMessages.receiverText}}</span>
+            <span>{{chatMessages.fromFullName}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.createUnixTime">Create Unix Time</span></dt>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.toUserId">To User Id</span></dt>
         <dd>
-            <span>{{chatMessages.createUnixTime}}</span>
+            <span>{{chatMessages.toUserId}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.updateUnixTime">Update Unix Time</span></dt>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.toUserName">To User Name</span></dt>
         <dd>
-            <span>{{chatMessages.updateUnixTime}}</span>
+            <span>{{chatMessages.toUserName}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.createdUnixTime">Created Unix Time</span></dt>
+        <dd>
+            <span>{{chatMessages.createdUnixTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.sendTime">Send Time</span></dt>
+        <dd>
+            <span>{{chatMessages.sendTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.readTime">Read Time</span></dt>
+        <dd>
+            <span>{{chatMessages.readTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{chatMessages.createdTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{chatMessages.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.lastModifiedTime">Last Modified Time</span></dt>
+        <dd>
+            <span>{{chatMessages.lastModifiedTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.maxSecondToAction">Max Second To Action</span></dt>
+        <dd>
+            <span>{{chatMessages.maxSecondToAction}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.chatMessages.reportDay">Report Day</span></dt>
         <dd>
             <span>{{chatMessages.reportDay}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.maxTimeToAction">Max Time To Action</span></dt>
+        <dt><span jhiTranslate="gatewayApp.chatMessages.likeCount">Like Count</span></dt>
         <dd>
-            <span>{{chatMessages.maxTimeToAction}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.chatMessages.referMessageId">Refer Message Id</span></dt>
-        <dd>
-            <span>{{chatMessages.referMessageId}}</span>
+            <span>{{chatMessages.likeCount}}</span>
         </dd>
     </dl>
 
