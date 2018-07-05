@@ -1,5 +1,6 @@
 package com.hdmon.gateway.config.oauth2;
 
+import com.hdmon.gateway.config.ApplicationProperties;
 import com.hdmon.gateway.security.oauth2.CookieTokenExtractor;
 import com.hdmon.gateway.security.oauth2.OAuth2AuthenticationService;
 import com.hdmon.gateway.security.oauth2.OAuth2CookieHelper;
@@ -25,11 +26,13 @@ public class OAuth2AuthenticationConfiguration extends ResourceServerConfigurerA
     private final OAuth2Properties oAuth2Properties;
     private final OAuth2TokenEndpointClient tokenEndpointClient;
     private final TokenStore tokenStore;
+    private final ApplicationProperties applicationProperties;
 
-    public OAuth2AuthenticationConfiguration(OAuth2Properties oAuth2Properties, OAuth2TokenEndpointClient tokenEndpointClient, TokenStore tokenStore) {
+    public OAuth2AuthenticationConfiguration(OAuth2Properties oAuth2Properties, OAuth2TokenEndpointClient tokenEndpointClient, TokenStore tokenStore, ApplicationProperties applicationProperties) {
         this.oAuth2Properties = oAuth2Properties;
         this.tokenEndpointClient = tokenEndpointClient;
         this.tokenStore = tokenStore;
+        this.applicationProperties = applicationProperties;
     }
 
     @Override
@@ -56,7 +59,7 @@ public class OAuth2AuthenticationConfiguration extends ResourceServerConfigurerA
 
     @Bean
     public OAuth2AuthenticationService uaaAuthenticationService() {
-        return new OAuth2AuthenticationService(tokenEndpointClient, cookieHelper());
+        return new OAuth2AuthenticationService(tokenEndpointClient, cookieHelper(), applicationProperties);
     }
 
     /**

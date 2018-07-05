@@ -13,17 +13,12 @@
             "detail": {
                 "title": "Contacts"
             },
-            "seqId": "Seq Id",
-            "ownerId": "Owner Id",
-            "ownerLogin": "Owner Login",
-            "contactLists": "Contact Lists",
-            "contactCount": "Contact Count",
-            "createdBy": "Created By",
-            "createdDate": "Created Date",
-            "createdUnixTime": "Created Unix Time",
-            "lastModifiedBy": "Last Modified By",
-            "lastModifiedDate": "Last Modified Date",
-            "lastModifiedUnixTime": "Last Modified Unix Time",
+            "ownerUserid": "Owner Userid",
+            "ownerUsername": "Owner Username",
+            "friendLists": "Friend Lists",
+            "groupLists": "Group Lists",
+            "createdTime": "Created Time",
+            "lastModifiedTime": "Last Modified Time",
             "reportDay": "Report Day"
         }
     },

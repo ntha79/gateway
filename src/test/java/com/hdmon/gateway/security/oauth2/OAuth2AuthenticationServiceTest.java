@@ -1,5 +1,6 @@
 package com.hdmon.gateway.security.oauth2;
 
+import com.hdmon.gateway.config.ApplicationProperties;
 import com.hdmon.gateway.config.oauth2.OAuth2Properties;
 import com.hdmon.gateway.web.filter.RefreshTokenFilter;
 import io.github.jhipster.config.JHipsterProperties;
@@ -56,11 +57,13 @@ public class OAuth2AuthenticationServiceTest {
     public ExpectedException expectedException = ExpectedException.none();
     private OAuth2Properties oAuth2Properties;
     private JHipsterProperties jHipsterProperties;
+    private ApplicationProperties applicationProperties;
 
     @Before
     public void init() {
         oAuth2Properties = new OAuth2Properties();
         jHipsterProperties = new JHipsterProperties();
+        applicationProperties = new ApplicationProperties();
         jHipsterProperties.getSecurity().getClientAuthorization().setAccessTokenUri("http://uaa/oauth/token");
         OAuth2CookieHelper cookieHelper = new OAuth2CookieHelper(oAuth2Properties);
         OAuth2AccessToken accessToken = createAccessToken(ACCESS_TOKEN_VALUE, REFRESH_TOKEN_VALUE);
@@ -69,7 +72,7 @@ public class OAuth2AuthenticationServiceTest {
         mockRefreshGrant();
 
         authorizationClient = new UaaTokenEndpointClient(restTemplate, jHipsterProperties, oAuth2Properties);
-        authenticationService = new OAuth2AuthenticationService(authorizationClient, cookieHelper);
+        authenticationService = new OAuth2AuthenticationService(authorizationClient, cookieHelper, applicationProperties);
         when(tokenStore.readAccessToken(ACCESS_TOKEN_VALUE)).thenReturn(accessToken);
         refreshTokenFilter = new RefreshTokenFilter(authenticationService, tokenStore);
     }

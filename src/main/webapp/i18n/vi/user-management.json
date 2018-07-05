@@ -18,6 +18,7 @@
         "firstName": "Tên",
         "lastName": "Họ",
         "email": "Email",
+        "mobile": "Điện thoại",
         "activated": "Kích hoạt",
         "deactivated": "Khóa",
         "profiles": "Các quyền",

@@ -16,47 +16,37 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="seqId"><span jhiTranslate="gatewayApp.contacts.seqId">Seq Id</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ownerId"><span jhiTranslate="gatewayApp.contacts.ownerId">Owner Id</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="ownerLogin"><span jhiTranslate="gatewayApp.contacts.ownerLogin">Owner Login</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="contactLists"><span jhiTranslate="gatewayApp.contacts.contactLists">Contact Lists</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="contactCount"><span jhiTranslate="gatewayApp.contacts.contactCount">Contact Count</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="createdBy"><span jhiTranslate="gatewayApp.contacts.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="createdDate"><span jhiTranslate="gatewayApp.contacts.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="createdUnixTime"><span jhiTranslate="gatewayApp.contacts.createdUnixTime">Created Unix Time</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="gatewayApp.contacts.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="gatewayApp.contacts.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="lastModifiedUnixTime"><span jhiTranslate="gatewayApp.contacts.lastModifiedUnixTime">Last Modified Unix Time</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="reportDay"><span jhiTranslate="gatewayApp.contacts.reportDay">Report Day</span> <span class="fa fa-sort"></span></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let contacts of contacts ;trackBy: trackId">
-                <td><a [routerLink]="['../contacts', contacts.id ]">{{contacts.id}}</a></td>
-                <td>{{contacts.seqId}}</td>
-                <td>{{contacts.ownerId}}</td>
-                <td>{{contacts.ownerLogin}}</td>
-                <td>{{contacts.contactLists}}</td>
-                <td>{{contacts.contactCount}}</td>
-                <td>{{contacts.createdBy}}</td>
-                <td>{{contacts.createdDate | date:'medium'}}</td>
-                <td>{{contacts.createdUnixTime}}</td>
-                <td>{{contacts.lastModifiedBy}}</td>
-                <td>{{contacts.lastModifiedDate | date:'medium'}}</td>
-                <td>{{contacts.lastModifiedUnixTime}}</td>
+                <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
+                <th jhiSortBy="ownerUserid"><span jhiTranslate="gatewayApp.contacts.ownerUserid">Owner Userid</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="ownerUsername"><span jhiTranslate="gatewayApp.contacts.ownerUsername">Owner Username</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="friendLists"><span jhiTranslate="gatewayApp.contacts.friendLists">Friend Lists</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="groupLists"><span jhiTranslate="gatewayApp.contacts.groupLists">Group Lists</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="createdTime"><span jhiTranslate="gatewayApp.contacts.createdTime">Created Time</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="lastModifiedTime"><span jhiTranslate="gatewayApp.contacts.lastModifiedTime">Last Modified Time</span> <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="reportDay"><span jhiTranslate="gatewayApp.contacts.reportDay">Report Day</span> <span class="fa fa-sort"></span></th>
+                <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let contacts of contacts ;trackBy: trackId">
+                    <!--<td><a [routerLink]="['../contacts', contacts.ownerUsername ]">{{contacts.id}}</a></td>-->
+                <td>{{contacts.ownerUserid}}</td>
+                <td>{{contacts.ownerUsername}}</td>
+                <td>{{contacts.friendLists}}</td>
+                <td>{{contacts.groupLists}}</td>
+                <td>{{contacts.createdTime}}</td>
+                <td>{{contacts.lastModifiedTime}}</td>
                 <td>{{contacts.reportDay}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../contacts', contacts.id ]"
+                                [routerLink]="['../contacts', contacts.ownerUsername ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.ownerUsername + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -64,7 +54,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.ownerUsername + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

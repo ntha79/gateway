@@ -3,8 +3,6 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
 
-import { JhiDateUtils } from 'ng-jhipster';
-
 import { Contacts } from './contacts.model';
 import { createRequestOption } from '../../shared';
 
@@ -15,7 +13,7 @@ export class ContactsService {
 
     private resourceUrl =  SERVER_API_URL + 'chatservice/api/contacts';
 
-    constructor(private http: HttpClient, private dateUtils: JhiDateUtils) { }
+    constructor(private http: HttpClient) { }
 
     create(contacts: Contacts): Observable<EntityResponseType> {
         const copy = this.convert(contacts);
@@ -63,10 +61,6 @@ export class ContactsService {
      */
     private convertItemFromServer(contacts: Contacts): Contacts {
         const copy: Contacts = Object.assign({}, contacts);
-        copy.createdDate = this.dateUtils
-            .convertDateTimeFromServer(contacts.createdDate);
-        copy.lastModifiedDate = this.dateUtils
-            .convertDateTimeFromServer(contacts.lastModifiedDate);
         return copy;
     }
 
@@ -75,10 +69,6 @@ export class ContactsService {
      */
     private convert(contacts: Contacts): Contacts {
         const copy: Contacts = Object.assign({}, contacts);
-
-        copy.createdDate = this.dateUtils.toDate(contacts.createdDate);
-
-        copy.lastModifiedDate = this.dateUtils.toDate(contacts.lastModifiedDate);
         return copy;
     }
 }

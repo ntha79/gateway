@@ -10,5 +10,24 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 @ConfigurationProperties(prefix = "application", ignoreUnknownFields = false)
 public class ApplicationProperties {
+    private final ApplicationProperties.Microservices microservice = new ApplicationProperties.Microservices();
 
+    public Microservices getMicroservices() {
+        return microservice;
+    }
+
+    public static class Microservices {
+        private String notificationUrl = "http://localhost:8080/notificationservice";
+
+        public Microservices() {
+        }
+
+        public String getNotificationUrl() {
+            return notificationUrl;
+        }
+
+        public void setNotificationUrl(String notificationUrl) {
+            this.notificationUrl = notificationUrl;
+        }
+    }
 }

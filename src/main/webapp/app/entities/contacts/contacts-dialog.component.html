@@ -7,69 +7,40 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!contacts.id">
+        <!--<div class="form-group" [hidden]="!contacts.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="contacts.id" readonly />
+        </div>-->
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.ownerUserid" for="field_ownerUserid">Owner Userid</label>
+            <input type="number" class="form-control" name="ownerUserid" id="field_ownerUserid"
+                [(ngModel)]="contacts.ownerUserid" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.seqId" for="field_seqId">Seq Id</label>
-            <input type="text" class="form-control" name="seqId" id="field_seqId"
-                [(ngModel)]="contacts.seqId" />
+            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.ownerUsername" for="field_ownerUsername">Owner Username</label>
+            <input type="text" class="form-control" name="ownerUsername" id="field_ownerUsername"
+                [(ngModel)]="contacts.ownerUsername" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.ownerId" for="field_ownerId">Owner Id</label>
-            <input type="number" class="form-control" name="ownerId" id="field_ownerId"
-                [(ngModel)]="contacts.ownerId" />
+            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.friendLists" for="field_friendLists">Friend Lists</label>
+            <input type="text" class="form-control" name="friendLists" id="field_friendLists"
+                [(ngModel)]="contacts.friendLists" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.ownerLogin" for="field_ownerLogin">Owner Login</label>
-            <input type="text" class="form-control" name="ownerLogin" id="field_ownerLogin"
-                [(ngModel)]="contacts.ownerLogin" />
+            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.groupLists" for="field_groupLists">Group Lists</label>
+            <input type="text" class="form-control" name="groupLists" id="field_groupLists"
+                [(ngModel)]="contacts.groupLists" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.contactLists" for="field_contactLists">Contact Lists</label>
-            <input type="text" class="form-control" name="contactLists" id="field_contactLists"
-                [(ngModel)]="contacts.contactLists" />
+            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.createdTime" for="field_createdTime">Created Time</label>
+            <input type="number" class="form-control" name="createdTime" id="field_createdTime"
+                [(ngModel)]="contacts.createdTime" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.contactCount" for="field_contactCount">Contact Count</label>
-            <input type="number" class="form-control" name="contactCount" id="field_contactCount"
-                [(ngModel)]="contacts.contactCount" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.createdBy" for="field_createdBy">Created By</label>
-            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
-                [(ngModel)]="contacts.createdBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.createdDate" for="field_createdDate">Created Date</label>
-            <div class="d-flex">
-                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="contacts.createdDate"
-                />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.createdUnixTime" for="field_createdUnixTime">Created Unix Time</label>
-            <input type="number" class="form-control" name="createdUnixTime" id="field_createdUnixTime"
-                [(ngModel)]="contacts.createdUnixTime" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
-            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
-                [(ngModel)]="contacts.lastModifiedBy" />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
-            <div class="d-flex">
-                <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" [(ngModel)]="contacts.lastModifiedDate"
-                />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.lastModifiedUnixTime" for="field_lastModifiedUnixTime">Last Modified Unix Time</label>
-            <input type="number" class="form-control" name="lastModifiedUnixTime" id="field_lastModifiedUnixTime"
-                [(ngModel)]="contacts.lastModifiedUnixTime" />
+            <label class="form-control-label" jhiTranslate="gatewayApp.contacts.lastModifiedTime" for="field_lastModifiedTime">Last Modified Time</label>
+            <input type="number" class="form-control" name="lastModifiedTime" id="field_lastModifiedTime"
+                [(ngModel)]="contacts.lastModifiedTime" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.contacts.reportDay" for="field_reportDay">Report Day</label>

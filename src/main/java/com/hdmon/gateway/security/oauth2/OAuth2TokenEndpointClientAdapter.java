@@ -1,14 +1,14 @@
 package com.hdmon.gateway.security.oauth2;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hdmon.gateway.config.ApplicationProperties;
 import com.hdmon.gateway.config.oauth2.OAuth2Properties;
+import com.hdmon.gateway.domain.IsoResponseEntity;
+import com.hdmon.gateway.web.rest.vm.StoreUserVM;
 import io.github.jhipster.config.JHipsterProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.exceptions.InvalidClientException;
 import org.springframework.util.LinkedMultiValueMap;
@@ -40,7 +40,8 @@ public abstract class OAuth2TokenEndpointClientAdapter implements OAuth2TokenEnd
      * @return the access token.
      */
     @Override
-    public OAuth2AccessToken sendPasswordGrant(String username, String password) {
+    public OAuth2AccessToken sendPasswordGrant(String username, String password, String deviceId, String gmcRegId, String clientType) {
+        OAuth2AccessToken accessToken = null;
         HttpHeaders reqHeaders = new HttpHeaders();
         reqHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         MultiValueMap<String, String> formParams = new LinkedMultiValueMap<>();
@@ -56,7 +57,10 @@ public abstract class OAuth2TokenEndpointClientAdapter implements OAuth2TokenEnd
             log.debug("failed to authenticate user with OAuth2 token endpoint, status: {}", responseEntity.getStatusCodeValue());
             throw new HttpClientErrorException(responseEntity.getStatusCode());
         }
-        OAuth2AccessToken accessToken = responseEntity.getBody();
+        else
+        {
+            accessToken = responseEntity.getBody();
+        }
         return accessToken;
     }
 
@@ -81,6 +85,7 @@ public abstract class OAuth2TokenEndpointClientAdapter implements OAuth2TokenEnd
             log.debug("failed to refresh tokens: {}", responseEntity.getStatusCodeValue());
             throw new HttpClientErrorException(responseEntity.getStatusCode());
         }
+
         OAuth2AccessToken accessToken = responseEntity.getBody();
         log.info("refreshed OAuth2 JWT cookies using refresh_token grant");
         return accessToken;
@@ -116,5 +121,4 @@ public abstract class OAuth2TokenEndpointClientAdapter implements OAuth2TokenEnd
         }
         return tokenEndpointUrl;
     }
-
 }

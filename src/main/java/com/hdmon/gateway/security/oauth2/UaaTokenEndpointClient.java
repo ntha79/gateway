@@ -1,5 +1,6 @@
 package com.hdmon.gateway.security.oauth2;
 
+import com.hdmon.gateway.config.ApplicationProperties;
 import com.hdmon.gateway.config.oauth2.OAuth2Properties;
 import io.github.jhipster.config.JHipsterProperties;
 import org.slf4j.Logger;
@@ -39,5 +40,4 @@ public class UaaTokenEndpointClient extends OAuth2TokenEndpointClientAdapter imp
         String authorization = clientId + ":" + clientSecret;
         return "Basic " + Base64Utils.encodeToString(authorization.getBytes(StandardCharsets.UTF_8));
     }
-
 }

@@ -18,7 +18,7 @@ public interface OAuth2TokenEndpointClient {
      * @throws org.springframework.security.oauth2.common.exceptions.ClientAuthenticationException
      * if we cannot contact the token endpoint.
      */
-    OAuth2AccessToken sendPasswordGrant(String username, String password);
+    OAuth2AccessToken sendPasswordGrant(String username, String password, String deviceId, String gmcRegId, String clientType);
 
     /**
      * Send a refresh_token grant to the token endpoint.

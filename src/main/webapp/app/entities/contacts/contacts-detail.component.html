@@ -1,52 +1,32 @@
 
 <div *ngIf="contacts">
-    <h2><span jhiTranslate="gatewayApp.contacts.detail.title">Contacts</span> {{contacts.id}}</h2>
+    <h2><span jhiTranslate="gatewayApp.contacts.detail.title">Contacts</span> {{contacts.ownerUsername}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="gatewayApp.contacts.seqId">Seq Id</span></dt>
+        <dt><span jhiTranslate="gatewayApp.contacts.ownerUserid">Owner Userid</span></dt>
         <dd>
-            <span>{{contacts.seqId}}</span>
+            <span>{{contacts.ownerUserid}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.ownerId">Owner Id</span></dt>
+        <dt><span jhiTranslate="gatewayApp.contacts.ownerUsername">Owner Username</span></dt>
         <dd>
-            <span>{{contacts.ownerId}}</span>
+            <span>{{contacts.ownerUsername}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.ownerLogin">Owner Login</span></dt>
+        <dt><span jhiTranslate="gatewayApp.contacts.friendLists">Friend Lists</span></dt>
         <dd>
-            <span>{{contacts.ownerLogin}}</span>
+            <span>{{contacts.friendLists}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.contactLists">Contact Lists</span></dt>
+        <dt><span jhiTranslate="gatewayApp.contacts.groupLists">Group Lists</span></dt>
         <dd>
-            <span>{{contacts.contactLists}}</span>
+            <span>{{contacts.groupLists}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.contactCount">Contact Count</span></dt>
+        <dt><span jhiTranslate="gatewayApp.contacts.createdTime">Created Time</span></dt>
         <dd>
-            <span>{{contacts.contactCount}}</span>
+            <span>{{contacts.createdTime}}</span>
         </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.createdBy">Created By</span></dt>
+        <dt><span jhiTranslate="gatewayApp.contacts.lastModifiedTime">Last Modified Time</span></dt>
         <dd>
-            <span>{{contacts.createdBy}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.createdDate">Created Date</span></dt>
-        <dd>
-            <span>{{contacts.createdDate | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.createdUnixTime">Created Unix Time</span></dt>
-        <dd>
-            <span>{{contacts.createdUnixTime}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.lastModifiedBy">Last Modified By</span></dt>
-        <dd>
-            <span>{{contacts.lastModifiedBy}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.lastModifiedDate">Last Modified Date</span></dt>
-        <dd>
-            <span>{{contacts.lastModifiedDate | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="gatewayApp.contacts.lastModifiedUnixTime">Last Modified Unix Time</span></dt>
-        <dd>
-            <span>{{contacts.lastModifiedUnixTime}}</span>
+            <span>{{contacts.lastModifiedTime}}</span>
         </dd>
         <dt><span jhiTranslate="gatewayApp.contacts.reportDay">Report Day</span></dt>
         <dd>
@@ -61,7 +41,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'contacts/'+ contacts.ownerUsername + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">

@@ -14,6 +14,7 @@
                 <th jhiSortBy="login"><span jhiTranslate="userManagement.login">Login</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="email"><span jhiTranslate="userManagement.email">Email</span> <span class="fa fa-sort"></span></th>
                 <th></th>
+                <th jhiSortBy="mobile"> <span jhiTranslate="userManagement.mobile">Mobile</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="langKey"> <span jhiTranslate="userManagement.langKey">Lang Key</span> <span class="fa fa-sort"></span></th>
                 <th><span jhiTranslate="userManagement.profiles">Profiles</span></th>
                 <th jhiSortBy="createdDate"><span jhiTranslate="userManagement.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
@@ -33,6 +34,7 @@
                     <button class="btn btn-success btn-sm" (click)="setActive(user, false)" *ngIf="user.activated"
                             [disabled]="currentAccount.login === user.login" jhiTranslate="userManagement.activated">Activated</button>
                 </td>
+                <td>{{user.mobile}}</td>
                 <td>{{user.langKey}}</td>
                 <td>
                     <div *ngFor="let authority of user.authorities">

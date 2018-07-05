@@ -1,11 +1,19 @@
 package com.hdmon.gateway.security.oauth2;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.hdmon.gateway.config.ApplicationProperties;
+import com.hdmon.gateway.domain.IsoResponseEntity;
+import com.hdmon.gateway.web.rest.vm.StoreUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -42,9 +50,13 @@ public class OAuth2AuthenticationService {
      */
     private final Cache<String, OAuth2Cookies> recentlyRefreshed;
 
-    public OAuth2AuthenticationService(OAuth2TokenEndpointClient authorizationClient, OAuth2CookieHelper cookieHelper) {
+    private final ApplicationProperties applicationProperties;
+
+    public OAuth2AuthenticationService(OAuth2TokenEndpointClient authorizationClient, OAuth2CookieHelper cookieHelper, ApplicationProperties applicationProperties) {
         this.authorizationClient = authorizationClient;
         this.cookieHelper = cookieHelper;
+        this.applicationProperties = applicationProperties;
+
         recentlyRefreshed = CacheBuilder.newBuilder()
             .expireAfterWrite(REFRESH_TOKEN_CACHE_SECS, TimeUnit.SECONDS)
             .build();
@@ -65,7 +77,16 @@ public class OAuth2AuthenticationService {
             String username = params.get("username");
             String password = params.get("password");
             boolean rememberMe = Boolean.valueOf(params.get("rememberMe"));
-            OAuth2AccessToken accessToken = authorizationClient.sendPasswordGrant(username, password);
+            String deviceId = params.get("deviceId");
+            String gmcRegId = params.get("gmcRegId");
+            String clientType = params.get("clientType");
+
+            OAuth2AccessToken accessToken = authorizationClient.sendPasswordGrant(username, password, deviceId, gmcRegId, clientType);
+            if(accessToken != null)
+            {
+                storeGmcToken(accessToken.getValue(), username, deviceId, gmcRegId, clientType);
+            }
+
             OAuth2Cookies cookies = new OAuth2Cookies();
             cookieHelper.createCookies(request, accessToken, rememberMe, cookies);
             cookies.addCookiesTo(response);
@@ -160,5 +181,51 @@ public class OAuth2AuthenticationService {
     public HttpServletRequest stripTokens(HttpServletRequest httpServletRequest) {
         Cookie[] cookies = cookieHelper.stripCookies(httpServletRequest.getCookies());
         return new CookiesHttpServletRequestWrapper(httpServletRequest, cookies);
+    }
+
+    /**
+     * Lưu thông tin
+     *
+     * @param login  username của thành viên đăng nhập.
+     * @param deviceId id của thiết bị hiện thời.
+     * @param gmcRegId token nhận được từ gmc
+     */
+    protected boolean storeGmcToken(String accessToken, String login, String deviceId, String gmcRegId, String clientType)
+    {
+        boolean blResult = false;
+        try {
+            if (clientType.isEmpty()) clientType = "UNKNOW";
+            RestTemplate restTemplate = new RestTemplate();
+            ObjectMapper mapper = new ObjectMapper();
+            String encodedAuth = OAuth2AccessToken.BEARER_TYPE + " " + accessToken;
+
+            HttpHeaders reqHeaders = new HttpHeaders();
+            reqHeaders.add("Authorization", encodedAuth);
+            reqHeaders.add("X-XSRF-TOKEN", accessToken);
+            reqHeaders.add("Cookie", "XSRF-TOKEN=" + accessToken);
+            reqHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+            StoreUserVM storeUserVM = new  StoreUserVM(deviceId, gmcRegId, clientType, login);
+            String jsonBody = mapper.writeValueAsString(storeUserVM);
+
+            HttpEntity<String> httpEntity = new HttpEntity<>(jsonBody, reqHeaders);
+            String requestUrl = applicationProperties.getMicroservices().getNotificationUrl() + "/api/notificationusers/storeuser";
+            ResponseEntity<IsoResponseEntity> responseEntity = restTemplate.postForEntity(requestUrl, httpEntity, IsoResponseEntity.class);
+
+            if (responseEntity.getStatusCode() != HttpStatus.OK) {
+                log.debug("failed to store GmcToken on Notification Service, status: {}", responseEntity.getStatusCodeValue());
+                blResult = false;
+            } else {
+                if (responseEntity.getBody().getError() == 1) {
+                    blResult = true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            log.info("Loi ghi trong ham ");
+            log.error("{}", ex);
+        }
+        return blResult;
     }
 }
