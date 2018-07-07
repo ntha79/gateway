@@ -7,15 +7,15 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!chatMessages.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
+        <!--<div class="form-group" [hidden]="!chatMessages.id">
+            <label for="id" jhiTranslate="global.field.seqId">Seq ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="chatMessages.id" readonly />
-        </div>
-        <div class="form-group">
+        </div>-->
+        <div class="form-group" [hidden]="!chatMessages.seqId">
             <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.seqId" for="field_seqId">Seq Id</label>
             <input type="text" class="form-control" name="seqId" id="field_seqId"
-                [(ngModel)]="chatMessages.seqId" />
+                [(ngModel)]="chatMessages.seqId" readonly />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.chatMessages.messageId" for="field_messageId">Message Id</label>

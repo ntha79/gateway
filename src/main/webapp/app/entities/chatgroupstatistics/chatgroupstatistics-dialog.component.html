@@ -7,15 +7,10 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!chatgroupstatistics.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="chatgroupstatistics.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.seqId" for="field_seqId">Seq Id</label>
-            <input type="text" class="form-control" name="seqId" id="field_seqId"
-                [(ngModel)]="chatgroupstatistics.seqId" />
+        <div class="form-group" [hidden]="!chatgroupstatistics.seqId">
+            <label for="seqId" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="seqId" name="seqId"
+                   [(ngModel)]="chatgroupstatistics.seqId" readonly />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="gatewayApp.chatgroupstatistics.dayCount" for="field_dayCount">Day Count</label>

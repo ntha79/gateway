@@ -27,7 +27,7 @@ export class ChatMessageStatisticsDeleteDialogComponent {
         this.activeModal.dismiss('cancel');
     }
 
-    confirmDelete(id: number) {
+    confirmDelete(id: string) {
         this.chatMessageStatisticsService.delete(id).subscribe((response) => {
             this.eventManager.broadcast({
                 name: 'chatMessageStatisticsListModification',

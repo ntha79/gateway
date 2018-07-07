@@ -213,7 +213,7 @@ public class OAuth2AuthenticationServiceTest {
         Cookie refreshTokenCookie = new Cookie(OAuth2CookieHelper.REFRESH_TOKEN_COOKIE, REFRESH_TOKEN_VALUE);
         request.setCookies(accessTokenCookie, refreshTokenCookie);
         MockHttpServletResponse response = new MockHttpServletResponse();
-        authenticationService.logout(request, response);
+        authenticationService.logout(request, response, null);
         Cookie newAccessTokenCookie = response.getCookie(OAuth2CookieHelper.ACCESS_TOKEN_COOKIE);
         Assert.assertEquals(0, newAccessTokenCookie.getMaxAge());
         Cookie newRefreshTokenCookie = response.getCookie(OAuth2CookieHelper.REFRESH_TOKEN_COOKIE);

@@ -38,15 +38,15 @@ describe('Component Tests', () => {
                 // GIVEN
 
                 spyOn(service, 'find').and.returnValue(Observable.of(new HttpResponse({
-                    body: new Chatgroups(123)
+                    body: new Chatgroups("123")
                 })));
 
                 // WHEN
                 comp.ngOnInit();
 
                 // THEN
-                expect(service.find).toHaveBeenCalledWith(123);
-                expect(comp.chatgroups).toEqual(jasmine.objectContaining({id: 123}));
+                expect(service.find).toHaveBeenCalledWith("123");
+                expect(comp.chatgroups).toEqual(jasmine.objectContaining({groupId: "123"}));
             });
         });
     });

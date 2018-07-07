@@ -49,7 +49,7 @@ export class ChatgroupsDetailComponent implements OnInit, OnDestroy {
     registerChangeInChatgroups() {
         this.eventSubscriber = this.eventManager.subscribe(
             'chatgroupsListModification',
-            (response) => this.load(this.chatgroups.id)
+            (response) => this.load(this.chatgroups.groupId)
         );
     }
 }

@@ -1,6 +1,6 @@
 
 <div *ngIf="chatgroups">
-    <h2><span jhiTranslate="gatewayApp.chatgroups.detail.title">Chatgroups</span> {{chatgroups.id}}</h2>
+    <h2><span jhiTranslate="gatewayApp.chatgroups.detail.title">Chatgroups</span> {{chatgroups.groupId}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -77,7 +77,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'chatgroups/'+ chatgroups.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'chatgroups/'+ chatgroups.groupId + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">

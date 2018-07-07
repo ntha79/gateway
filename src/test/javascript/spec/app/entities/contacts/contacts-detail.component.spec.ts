@@ -46,7 +46,7 @@ describe('Component Tests', () => {
 
                 // THEN
                 expect(service.find).toHaveBeenCalledWith(123);
-                expect(comp.contacts).toEqual(jasmine.objectContaining({id: 123}));
+                expect(comp.contacts).toEqual(jasmine.objectContaining({ownerUserid: 123}));
             });
         });
     });

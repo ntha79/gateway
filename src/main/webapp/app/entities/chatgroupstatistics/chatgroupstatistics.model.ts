@@ -5,9 +5,8 @@ export const enum CheckStatusEnum {
     ' CHECKED'
 }
 
-export class Chatgroupstatistics implements BaseEntity {
+export class Chatgroupstatistics {
     constructor(
-        public id?: number,
         public seqId?: string,
         public dayCount?: number,
         public monthCount?: number,

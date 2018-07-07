@@ -49,7 +49,7 @@ describe('Component Tests', () => {
                         tick();
 
                         // THEN
-                        expect(service.delete).toHaveBeenCalledWith(123);
+                        expect(service.delete).toHaveBeenCalledWith("123");
                         expect(mockActiveModal.dismissSpy).toHaveBeenCalled();
                         expect(mockEventManager.broadcastSpy).toHaveBeenCalled();
                     })

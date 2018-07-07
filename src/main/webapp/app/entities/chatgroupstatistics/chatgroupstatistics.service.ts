@@ -27,7 +27,7 @@ export class ChatgroupstatisticsService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-    find(id: number): Observable<EntityResponseType> {
+    find(id: string): Observable<EntityResponseType> {
         return this.http.get<Chatgroupstatistics>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
@@ -38,7 +38,7 @@ export class ChatgroupstatisticsService {
             .map((res: HttpResponse<Chatgroupstatistics[]>) => this.convertArrayResponse(res));
     }
 
-    delete(id: number): Observable<HttpResponse<any>> {
+    delete(id: string): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
     }
 

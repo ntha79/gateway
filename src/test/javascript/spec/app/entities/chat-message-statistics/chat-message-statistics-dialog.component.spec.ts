@@ -44,7 +44,7 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        const entity = new ChatMessageStatistics(123);
+                        const entity = new ChatMessageStatistics("123");
                         spyOn(service, 'update').and.returnValue(Observable.of(new HttpResponse({body: entity})));
                         comp.chatMessageStatistics = entity;
                         // WHEN

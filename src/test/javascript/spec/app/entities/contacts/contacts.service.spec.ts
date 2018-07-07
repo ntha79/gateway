@@ -40,11 +40,11 @@ describe('Service Tests', () => {
             it('should return Contacts', () => {
 
                 service.find(123).subscribe((received) => {
-                    expect(received.body.id).toEqual(123);
+                    expect(received.body.ownerUserid).toEqual(123);
                 });
 
                 const req = httpMock.expectOne({ method: 'GET' });
-                req.flush({id: 123});
+                req.flush({ownerUserid: 123});
             });
 
             it('should propagate not found response', () => {

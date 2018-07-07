@@ -94,7 +94,7 @@ currentAccount: any;
     }
 
     trackId(index: number, item: Chatgroups) {
-        return item.id;
+        return item.groupId;
     }
     registerChangeInChatgroups() {
         this.eventSubscriber = this.eventManager.subscribe('chatgroupsListModification', (response) => this.loadAll());

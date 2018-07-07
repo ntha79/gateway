@@ -1,7 +1,7 @@
 
 {
     "gatewayApp": {
-        "chatGroupStatistics" : {
+        "chatgroupstatistics" : {
             "home": {
                 "title": "Chat Group Statistics",
                 "createLabel": "Create a new Chat Group Statistics",

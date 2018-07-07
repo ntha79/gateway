@@ -60,9 +60,10 @@ public class AuthResource {
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     @Timed
-    public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
+    public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response, @RequestBody
+        Map<String, String> params) {
         log.info("logging out user {}", SecurityContextHolder.getContext().getAuthentication().getName());
-        authenticationService.logout(request, response);
+        authenticationService.logout(request, response, params);
         return ResponseEntity.ok(null);
     }
 }

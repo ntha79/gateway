@@ -1,8 +1,7 @@
 import { BaseEntity } from './../../shared';
 
-export class Contacts implements BaseEntity {
+export class Contacts {
     constructor(
-        public id?: number,
         public ownerUserid?: number,
         public ownerUsername?: string,
         public friendLists?: string,

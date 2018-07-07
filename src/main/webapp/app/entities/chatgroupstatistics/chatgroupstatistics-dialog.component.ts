@@ -36,7 +36,7 @@ export class ChatgroupstatisticsDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.chatgroupstatistics.id !== undefined) {
+        if (this.chatgroupstatistics.seqId !== undefined) {
             this.subscribeToSaveResponse(
                 this.chatgroupstatisticsService.update(this.chatgroupstatistics));
         } else {

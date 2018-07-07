@@ -24,9 +24,8 @@ export const enum ChatMessageStatusEnum {
     'PINING'
 }
 
-export class ChatMessages implements BaseEntity {
+export class ChatMessages {
     constructor(
-        public id?: number,
         public seqId?: string,
         public messageId?: string,
         public groupChatId?: string,

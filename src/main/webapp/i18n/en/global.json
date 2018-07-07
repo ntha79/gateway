@@ -19,7 +19,6 @@
                 "pushNotifications": "Push Notifications",
                 "serviceSettings": "Service Settings",
                 "chatmessagestatistics": "chatmessagestatistics",
-                "chatgroupstatistics": "Chatgroupstatistics",
                 "chatGroupStatistics": "Chat Group Statistics",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },

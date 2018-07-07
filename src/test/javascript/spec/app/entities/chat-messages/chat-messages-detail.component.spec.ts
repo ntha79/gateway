@@ -38,15 +38,15 @@ describe('Component Tests', () => {
                 // GIVEN
 
                 spyOn(service, 'find').and.returnValue(Observable.of(new HttpResponse({
-                    body: new ChatMessages(123)
+                    body: new ChatMessages("123")
                 })));
 
                 // WHEN
                 comp.ngOnInit();
 
                 // THEN
-                expect(service.find).toHaveBeenCalledWith(123);
-                expect(comp.chatMessages).toEqual(jasmine.objectContaining({id: 123}));
+                expect(service.find).toHaveBeenCalledWith("123");
+                expect(comp.chatMessages).toEqual(jasmine.objectContaining({seqId: "123"}));
             });
         });
     });

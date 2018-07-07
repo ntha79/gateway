@@ -94,7 +94,7 @@ currentAccount: any;
     }
 
     trackId(index: number, item: Contacts) {
-        return item.id;
+        return item.ownerUsername;
     }
     registerChangeInContacts() {
         this.eventSubscriber = this.eventManager.subscribe('contactsListModification', (response) => this.loadAll());
@@ -102,8 +102,8 @@ currentAccount: any;
 
     sort() {
         const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
+        if (this.predicate !== 'ownerUserid') {
+            result.push('ownerUserid');
         }
         return result;
     }

@@ -36,7 +36,7 @@ export class ChatMessagesDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.chatMessages.id !== undefined) {
+        if (this.chatMessages.seqId !== undefined) {
             this.subscribeToSaveResponse(
                 this.chatMessagesService.update(this.chatMessages));
         } else {

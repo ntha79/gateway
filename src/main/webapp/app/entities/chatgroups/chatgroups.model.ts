@@ -14,9 +14,8 @@ export const enum GroupMemberStatusEnum {
     'DELETED'
 }
 
-export class Chatgroups implements BaseEntity {
+export class Chatgroups {
     constructor(
-        public id?: number,
         public groupId?: string,
         public groupType?: GroupTypeEnum,
         public groupName?: string,

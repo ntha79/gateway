@@ -1,7 +1,7 @@
 
 {
     "gatewayApp": {
-        "chatGroupStatistics" : {
+        "chatgroupstatistics" : {
             "home": {
                 "title": "Chat Group Statistics",
                 "createLabel": "Thêm mới một Chat Group Statistics",
@@ -24,7 +24,7 @@
         }
     },
     "chatserviceApp": {
-        "chatGroupStatistics" : {
+        "chatgroupstatistics" : {
             "created": "Một Chat Group Statistics mới được tạo với định danh {{ param }}",
             "updated": "Một Chat Group Statistics cập nhật với định danh {{ param }}",
             "deleted": "Một Chat Group Statistics đã xóa với định danh {{ param }}"

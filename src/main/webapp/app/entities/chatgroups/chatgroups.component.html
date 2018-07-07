@@ -16,7 +16,7 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="groupId"><span jhiTranslate="gatewayApp.chatgroups.groupId">Group Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="groupType"><span jhiTranslate="gatewayApp.chatgroups.groupType">Group Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="groupName"><span jhiTranslate="gatewayApp.chatgroups.groupName">Group Name</span> <span class="fa fa-sort"></span></th>
@@ -38,8 +38,8 @@
             </thead>
             <tbody>
             <tr *ngFor="let chatgroups of chatgroups ;trackBy: trackId">
-                <td><a [routerLink]="['../chatgroups', chatgroups.id ]">{{chatgroups.id}}</a></td>
-                <td>{{chatgroups.groupId}}</td>
+                <!--<td><a [routerLink]="['../chatgroups', chatgroups.id ]">{{chatgroups.id}}</a></td>-->
+                <td><a [routerLink]="['../chatgroups', chatgroups.groupId ]">{{chatgroups.groupId}}</a></td>
                 <td jhiTranslate="{{'gatewayApp.GroupTypeEnum.' + chatgroups.groupType}}">{{chatgroups.groupType}}</td>
                 <td>{{chatgroups.groupName}}</td>
                 <td>{{chatgroups.groupIcon}}</td>
@@ -58,13 +58,13 @@
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../chatgroups', chatgroups.id ]"
+                                [routerLink]="['../chatgroups', chatgroups.groupId ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'chatgroups/'+ chatgroups.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'chatgroups/'+ chatgroups.groupId + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -72,7 +72,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'chatgroups/'+ chatgroups.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'chatgroups/'+ chatgroups.groupId + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

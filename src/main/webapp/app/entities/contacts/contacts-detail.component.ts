@@ -49,7 +49,7 @@ export class ContactsDetailComponent implements OnInit, OnDestroy {
     registerChangeInContacts() {
         this.eventSubscriber = this.eventManager.subscribe(
             'contactsListModification',
-            (response) => this.load(this.contacts.id)
+            (response) => this.load(this.contacts.ownerUserid)
         );
     }
 }

@@ -49,7 +49,7 @@ export class ChatMessagesDetailComponent implements OnInit, OnDestroy {
     registerChangeInChatMessages() {
         this.eventSubscriber = this.eventManager.subscribe(
             'chatMessagesListModification',
-            (response) => this.load(this.chatMessages.id)
+            (response) => this.load(this.chatMessages.seqId)
         );
     }
 }

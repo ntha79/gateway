@@ -36,7 +36,7 @@ export class ContactsDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.contacts.id !== undefined) {
+        if (this.contacts.ownerUserid !== undefined) {
             this.subscribeToSaveResponse(
                 this.contactsService.update(this.contacts));
         } else {

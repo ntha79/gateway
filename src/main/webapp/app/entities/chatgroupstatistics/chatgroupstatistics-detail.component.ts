@@ -49,7 +49,7 @@ export class ChatgroupstatisticsDetailComponent implements OnInit, OnDestroy {
     registerChangeInChatgroupstatistics() {
         this.eventSubscriber = this.eventManager.subscribe(
             'chatgroupstatisticsListModification',
-            (response) => this.load(this.chatgroupstatistics.id)
+            (response) => this.load(this.chatgroupstatistics.seqId)
         );
     }
 }

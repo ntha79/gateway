@@ -16,7 +16,7 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
             <th jhiSortBy="seqId"><span jhiTranslate="gatewayApp.chatMessages.seqId">Seq Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="messageId"><span jhiTranslate="gatewayApp.chatMessages.messageId">Message Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="groupChatId"><span jhiTranslate="gatewayApp.chatMessages.groupChatId">Group Chat Id</span> <span class="fa fa-sort"></span></th>
@@ -44,8 +44,8 @@
             </thead>
             <tbody>
             <tr *ngFor="let chatMessages of chatMessages ;trackBy: trackId">
-                <td><a [routerLink]="['../chat-messages', chatMessages.id ]">{{chatMessages.id}}</a></td>
-                <td>{{chatMessages.seqId}}</td>
+                <!--<td><a [routerLink]="['../chat-messages', chatMessages.id ]">{{chatMessages.id}}</a></td>-->
+                <td><a [routerLink]="['../chat-messages', chatMessages.seqId ]">{{chatMessages.seqId}}</a></td>
                 <td>{{chatMessages.messageId}}</td>
                 <td>{{chatMessages.groupChatId}}</td>
                 <td jhiTranslate="{{'gatewayApp.GroupTypeEnum.' + chatMessages.groupType}}">{{chatMessages.groupType}}</td>
@@ -70,13 +70,13 @@
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../chat-messages', chatMessages.id ]"
+                                [routerLink]="['../chat-messages', chatMessages.seqId ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'chat-messages/'+ chatMessages.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'chat-messages/'+ chatMessages.seqId + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -84,7 +84,7 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'chat-messages/'+ chatMessages.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'chat-messages/'+ chatMessages.seqId + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

@@ -1,6 +1,6 @@
 
 <div *ngIf="chatMessageStatistics">
-    <h2><span jhiTranslate="gatewayApp.chatMessageStatistics.detail.title">Chat Message Statistics</span> {{chatMessageStatistics.id}}</h2>
+    <h2><span jhiTranslate="gatewayApp.chatMessageStatistics.detail.title">Chat Message Statistics</span> {{chatMessageStatistics.seqId}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -45,7 +45,7 @@
     </button>
 
     <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'chat-message-statistics/'+ chatMessageStatistics.id + '/edit'} }]"
+            [routerLink]="['/', { outlets: { popup: 'chat-message-statistics/'+ chatMessageStatistics.seqId + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"
             class="btn btn-primary">

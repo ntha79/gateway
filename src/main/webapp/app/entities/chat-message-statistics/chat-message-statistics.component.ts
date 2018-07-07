@@ -94,7 +94,7 @@ currentAccount: any;
     }
 
     trackId(index: number, item: ChatMessageStatistics) {
-        return item.id;
+        return item.seqId;
     }
     registerChangeInChatMessageStatistics() {
         this.eventSubscriber = this.eventManager.subscribe('chatMessageStatisticsListModification', (response) => this.loadAll());
@@ -102,8 +102,8 @@ currentAccount: any;
 
     sort() {
         const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-        if (this.predicate !== 'id') {
-            result.push('id');
+        if (this.predicate !== 'seqId') {
+            result.push('seqId');
         }
         return result;
     }

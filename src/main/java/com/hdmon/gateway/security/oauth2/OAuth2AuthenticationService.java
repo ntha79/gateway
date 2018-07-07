@@ -5,7 +5,8 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.hdmon.gateway.config.ApplicationProperties;
 import com.hdmon.gateway.domain.IsoResponseEntity;
-import com.hdmon.gateway.web.rest.vm.StoreUserVM;
+import com.hdmon.gateway.web.rest.vm.CancelGcmUserVM;
+import com.hdmon.gateway.web.rest.vm.StoreGcmUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.*;
@@ -117,7 +118,7 @@ public class OAuth2AuthenticationService {
         //check if non-remember-me session has expired
         if (cookieHelper.isSessionExpired(refreshCookie)) {
             log.info("session has expired due to inactivity");
-            logout(request, response);       //logout to clear cookies in browser
+            logout(request, response, null);       //logout to clear cookies in browser
             return stripTokens(request);            //don't include cookies downstream
         }
         OAuth2Cookies cookies = getCachedCookies(refreshCookie.getValue());
@@ -167,7 +168,17 @@ public class OAuth2AuthenticationService {
      * @param httpServletRequest  the request containing the Cookies.
      * @param httpServletResponse the response used to clear them.
      */
-    public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+    public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+                       Map<String, String> params) {
+        //Chỉ trường hợp logout mới xóa
+        if(params != null) {
+            Cookie cookie = OAuth2CookieHelper.getAccessTokenCookie(httpServletRequest);
+            String accessToken = cookie.getValue();
+            String deviceId = params.get("deviceId");
+            cancelGmcToken(accessToken, deviceId);
+        }
+
+        //Xóa cookie
         cookieHelper.clearCookies(httpServletRequest, httpServletResponse);
     }
 
@@ -184,7 +195,7 @@ public class OAuth2AuthenticationService {
     }
 
     /**
-     * Lưu thông tin
+     * Lưu thông tin của gmc token sang notification serivce
      *
      * @param login  username của thành viên đăng nhập.
      * @param deviceId id của thiết bị hiện thời.
@@ -205,7 +216,7 @@ public class OAuth2AuthenticationService {
             reqHeaders.add("Cookie", "XSRF-TOKEN=" + accessToken);
             reqHeaders.setContentType(MediaType.APPLICATION_JSON);
 
-            StoreUserVM storeUserVM = new  StoreUserVM(deviceId, gmcRegId, clientType, login);
+            StoreGcmUserVM storeUserVM = new  StoreGcmUserVM(deviceId, gmcRegId, clientType, login);
             String jsonBody = mapper.writeValueAsString(storeUserVM);
 
             HttpEntity<String> httpEntity = new HttpEntity<>(jsonBody, reqHeaders);
@@ -214,6 +225,50 @@ public class OAuth2AuthenticationService {
 
             if (responseEntity.getStatusCode() != HttpStatus.OK) {
                 log.debug("failed to store GmcToken on Notification Service, status: {}", responseEntity.getStatusCodeValue());
+                blResult = false;
+            } else {
+                if (responseEntity.getBody().getError() == 1) {
+                    blResult = true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            log.info("Loi ghi trong ham OAuth2AuthenticationService.storeGmcToken(token, {},{},{},{})", login, deviceId, gmcRegId, clientType);
+            log.error("{}", ex);
+        }
+        return blResult;
+    }
+
+    /**
+     * Thay đổi trạng thái của gmc token trong notification serivce khi userlogout
+     * @param accessToken token của user đang thao tác
+     * @param deviceId id của thiết bị hiện thời.
+     * return true/false
+     */
+    protected boolean cancelGmcToken(String accessToken, String deviceId)
+    {
+        boolean blResult = false;
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            ObjectMapper mapper = new ObjectMapper();
+            String encodedAuth = OAuth2AccessToken.BEARER_TYPE + " " + accessToken;
+
+            HttpHeaders reqHeaders = new HttpHeaders();
+            reqHeaders.add("Authorization", encodedAuth);
+            reqHeaders.add("X-XSRF-TOKEN", accessToken);
+            reqHeaders.add("Cookie", "XSRF-TOKEN=" + accessToken);
+            reqHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+            CancelGcmUserVM cancelGcmUserVM = new  CancelGcmUserVM(deviceId);
+            String jsonBody = mapper.writeValueAsString(cancelGcmUserVM);
+
+            HttpEntity<String> httpEntity = new HttpEntity<>(jsonBody, reqHeaders);
+            String requestUrl = applicationProperties.getMicroservices().getNotificationUrl() + "/api/notificationusers/canceluser";
+            ResponseEntity<IsoResponseEntity> responseEntity = restTemplate.postForEntity(requestUrl, httpEntity, IsoResponseEntity.class);
+
+            if (responseEntity.getStatusCode() != HttpStatus.OK) {
+                log.debug("failed to cancel GmcToken on Notification Service, status: {}", responseEntity.getStatusCodeValue());
                 blResult = false;
             } else {
                 if (responseEntity.getBody().getError() == 1) {

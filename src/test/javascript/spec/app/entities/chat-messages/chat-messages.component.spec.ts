@@ -38,7 +38,7 @@ describe('Component Tests', () => {
                 // GIVEN
                 const headers = new HttpHeaders().append('link', 'link;link');
                 spyOn(service, 'query').and.returnValue(Observable.of(new HttpResponse({
-                    body: [new ChatMessages(123)],
+                    body: [new ChatMessages("123")],
                     headers
                 })));
 
@@ -47,7 +47,7 @@ describe('Component Tests', () => {
 
                 // THEN
                 expect(service.query).toHaveBeenCalled();
-                expect(comp.chatMessages[0]).toEqual(jasmine.objectContaining({id: 123}));
+                expect(comp.chatMessages[0]).toEqual(jasmine.objectContaining({seqId: "123"}));
             });
         });
     });

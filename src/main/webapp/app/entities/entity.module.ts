@@ -8,8 +8,6 @@ import { GatewayContactsModule } from './contacts/contacts.module';
 import { GatewayUserSettingsModule } from './user-settings/user-settings.module';
 import { GatewayPushNotificationsModule } from './push-notifications/push-notifications.module';
 import { GatewayServiceSettingsModule } from './service-settings/service-settings.module';
-import { GatewayChatmessagestatisticsModule } from './chatmessagestatistics/chatmessagestatistics.module';
-import { GatewayChatGroupStatisticsModule } from './chat-group-statistics/chat-group-statistics.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -22,8 +20,6 @@ import { GatewayChatGroupStatisticsModule } from './chat-group-statistics/chat-g
         GatewayUserSettingsModule,
         GatewayPushNotificationsModule,
         GatewayServiceSettingsModule,
-        GatewayChatmessagestatisticsModule,
-        GatewayChatGroupStatisticsModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
