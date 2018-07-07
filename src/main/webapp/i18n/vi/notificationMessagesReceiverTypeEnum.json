@@ -1,0 +1,10 @@
+{
+    "gatewayApp": {
+        "NotificationMessagesReceiverTypeEnum" : {
+            "null": "",
+            "ALL": "ALL",
+            "LIST": "LIST",
+            "ONE": "ONE"
+        }
+    }
+}

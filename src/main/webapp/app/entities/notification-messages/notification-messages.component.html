@@ -1,0 +1,106 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.notificationMessages.home.title">Notification Messages</span>
+        <button class="btn btn-primary float-right jh-create-entity create-notification-messages" [routerLink]="['/', { outlets: { popup: ['notification-messages-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="gatewayApp.notificationMessages.home.createLabel">
+            Create new Notification Messages
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="notificationMessages">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
+            <th jhiSortBy="seqId"><span jhiTranslate="gatewayApp.notificationMessages.seqId">Seq Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="gatewayApp.notificationMessages.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="msgTitle"><span jhiTranslate="gatewayApp.notificationMessages.msgTitle">Msg Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="msgBody"><span jhiTranslate="gatewayApp.notificationMessages.msgBody">Msg Body</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="msgLink"><span jhiTranslate="gatewayApp.notificationMessages.msgLink">Msg Link</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="msgData"><span jhiTranslate="gatewayApp.notificationMessages.msgData">Msg Data</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="gatewayApp.notificationMessages.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="clientType"><span jhiTranslate="gatewayApp.notificationMessages.clientType">Client Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="receiverType"><span jhiTranslate="gatewayApp.notificationMessages.receiverType">Receiver Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="receiverList"><span jhiTranslate="gatewayApp.notificationMessages.receiverList">Receiver List</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="errorList"><span jhiTranslate="gatewayApp.notificationMessages.errorList">Error List</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="timeToSend"><span jhiTranslate="gatewayApp.notificationMessages.timeToSend">Time To Send</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reportDay"><span jhiTranslate="gatewayApp.notificationMessages.reportDay">Report Day</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sendErrorCount"><span jhiTranslate="gatewayApp.notificationMessages.sendErrorCount">Send Error Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="priority"><span jhiTranslate="gatewayApp.notificationMessages.priority">Priority</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="expireTime"><span jhiTranslate="gatewayApp.notificationMessages.expireTime">Expire Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="hasSound"><span jhiTranslate="gatewayApp.notificationMessages.hasSound">Has Sound</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="gatewayApp.notificationMessages.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="gatewayApp.notificationMessages.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="gatewayApp.notificationMessages.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="gatewayApp.notificationMessages.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let notificationMessages of notificationMessages ;trackBy: trackId">
+                <!--<td><a [routerLink]="['../notification-messages', notificationMessages.id ]">{{notificationMessages.id}}</a></td>-->
+                <td><a [routerLink]="['../notification-messages', notificationMessages.seqId ]">{{notificationMessages.seqId}}</a></td>
+                <td>{{notificationMessages.name}}</td>
+                <td>{{notificationMessages.msgTitle}}</td>
+                <td>{{notificationMessages.msgBody}}</td>
+                <td>{{notificationMessages.msgLink}}</td>
+                <td>{{notificationMessages.msgData}}</td>
+                <td jhiTranslate="{{'gatewayApp.NotificationMessagesStatusEnum.' + notificationMessages.status}}">{{notificationMessages.status}}</td>
+                <td jhiTranslate="{{'gatewayApp.NotificationMessagesClientTypeEnum.' + notificationMessages.clientType}}">{{notificationMessages.clientType}}</td>
+                <td jhiTranslate="{{'gatewayApp.NotificationMessagesReceiverTypeEnum.' + notificationMessages.receiverType}}">{{notificationMessages.receiverType}}</td>
+                <td>{{notificationMessages.receiverList}}</td>
+                <td>{{notificationMessages.errorList}}</td>
+                <td>{{notificationMessages.timeToSend}}</td>
+                <td>{{notificationMessages.reportDay}}</td>
+                <td>{{notificationMessages.sendErrorCount}}</td>
+                <td jhiTranslate="{{'gatewayApp.NotificationMessagesPriorityEnum.' + notificationMessages.priority}}">{{notificationMessages.priority}}</td>
+                <td>{{notificationMessages.expireTime}}</td>
+                <td>{{notificationMessages.hasSound}}</td>
+                <td>{{notificationMessages.createdBy}}</td>
+                <td>{{notificationMessages.createdDate | date:'medium'}}</td>
+                <td>{{notificationMessages.lastModifiedBy}}</td>
+                <td>{{notificationMessages.lastModifiedDate | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../notification-messages', notificationMessages.seqId ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'notification-messages/'+ notificationMessages.seqId + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'notification-messages/'+ notificationMessages.seqId + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="notificationMessages && notificationMessages.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

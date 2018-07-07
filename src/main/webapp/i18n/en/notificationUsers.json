@@ -1,0 +1,34 @@
+
+{
+    "gatewayApp": {
+        "notificationUsers" : {
+            "home": {
+                "title": "Notification Users",
+                "createLabel": "Create a new Notification Users",
+                "createOrEditLabel": "Create or edit a Notification Users"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Notification Users {{ id }}?"
+            },
+            "detail": {
+                "title": "Notification Users"
+            },
+            "deviceId": "Device Id",
+            "gmcRegId": "Gmc Reg Id",
+            "clientType": "Client Type",
+            "ownerUserid": "Owner Userid",
+            "ownerUsername": "Owner Username",
+            "status": "Status",
+            "createdTime": "Created Time",
+            "lastModifiedTime": "Last Modified Time",
+            "reportDay": "Report Day"
+        }
+    },
+    "notificationServiceApp": {
+        "notificationUsers" : {
+            "created": "A new Notification Users is created with identifier {{ param }}",
+            "updated": "A Notification Users is updated with identifier {{ param }}",
+            "deleted": "A Notification Users is deleted with identifier {{ param }}"
+        }
+    }
+}

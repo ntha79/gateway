@@ -8,6 +8,8 @@ import { GatewayContactsModule } from './contacts/contacts.module';
 import { GatewayUserSettingsModule } from './user-settings/user-settings.module';
 import { GatewayPushNotificationsModule } from './push-notifications/push-notifications.module';
 import { GatewayServiceSettingsModule } from './service-settings/service-settings.module';
+import { GatewayNotificationUsersModule } from './notification-users/notification-users.module';
+import { GatewayNotificationMessagesModule } from './notification-messages/notification-messages.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -20,6 +22,8 @@ import { GatewayServiceSettingsModule } from './service-settings/service-setting
         GatewayUserSettingsModule,
         GatewayPushNotificationsModule,
         GatewayServiceSettingsModule,
+        GatewayNotificationUsersModule,
+        GatewayNotificationMessagesModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

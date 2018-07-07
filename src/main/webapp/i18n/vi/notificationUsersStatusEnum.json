@@ -1,0 +1,9 @@
+{
+    "gatewayApp": {
+        "NotificationUsersStatusEnum" : {
+            "null": "",
+            "ACTIVE": "ACTIVE",
+            "UNACTIVE": "UNACTIVE"
+        }
+    }
+}

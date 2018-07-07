@@ -1,0 +1,13 @@
+{
+    "gatewayApp": {
+        "NotificationMessagesStatusEnum" : {
+            "null": "",
+            "INIT": "INIT",
+            "SENDING": "SENDING",
+            "HASERROR": "HASERROR",
+            "CANCEL": "CANCEL",
+            "EXPIRED": "EXPIRED",
+            "FINISH": "FINISH"
+        }
+    }
+}

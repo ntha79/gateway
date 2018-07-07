@@ -278,7 +278,7 @@ public class OAuth2AuthenticationService {
         }
         catch (Exception ex)
         {
-            log.info("Loi ghi trong ham ");
+            log.info("Loi ghi trong ham OAuth2AuthenticationService.cancelGmcToken(token, {})", deviceId);
             log.error("{}", ex);
         }
         return blResult;

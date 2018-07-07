@@ -1,0 +1,13 @@
+{
+    "gatewayApp": {
+        "NotificationUsersClientTypeEnum" : {
+            "null": "",
+            "UNKNOW": "UNKNOW",
+            "WEB": "WEB",
+            "ANDROID": "ANDROID",
+            "IOS": "IOS",
+            "BLACKBERY": "BLACKBERY",
+            "WINPHONE": "WINPHONE"
+        }
+    }
+}

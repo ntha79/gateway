@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span jhiTranslate="gatewayApp.notificationUsers.home.title">Notification Users</span>
+        <button class="btn btn-primary float-right jh-create-entity create-notification-users" [routerLink]="['/', { outlets: { popup: ['notification-users-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="gatewayApp.notificationUsers.home.createLabel">
+            Create new Notification Users
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="notificationUsers">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>-->
+            <th jhiSortBy="deviceId"><span jhiTranslate="gatewayApp.notificationUsers.deviceId">Device Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="gmcRegId"><span jhiTranslate="gatewayApp.notificationUsers.gmcRegId">Gmc Reg Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="clientType"><span jhiTranslate="gatewayApp.notificationUsers.clientType">Client Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ownerUserid"><span jhiTranslate="gatewayApp.notificationUsers.ownerUserid">Owner Userid</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="ownerUsername"><span jhiTranslate="gatewayApp.notificationUsers.ownerUsername">Owner Username</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="status"><span jhiTranslate="gatewayApp.notificationUsers.status">Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdTime"><span jhiTranslate="gatewayApp.notificationUsers.createdTime">Created Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedTime"><span jhiTranslate="gatewayApp.notificationUsers.lastModifiedTime">Last Modified Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="reportDay"><span jhiTranslate="gatewayApp.notificationUsers.reportDay">Report Day</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let notificationUsers of notificationUsers ;trackBy: trackId">
+                <!--<td><a [routerLink]="['../notification-users', notificationUsers.id ]">{{notificationUsers.id}}</a></td>-->
+                <td><a [routerLink]="['../notification-users', notificationUsers.deviceId ]">{{notificationUsers.deviceId}}</a></td>
+                <td>{{notificationUsers.gmcRegId}}</td>
+                <td jhiTranslate="{{'gatewayApp.NotificationUsersClientTypeEnum.' + notificationUsers.clientType}}">{{notificationUsers.clientType}}</td>
+                <td>{{notificationUsers.ownerUserid}}</td>
+                <td>{{notificationUsers.ownerUsername}}</td>
+                <td jhiTranslate="{{'gatewayApp.NotificationUsersStatusEnum.' + notificationUsers.status}}">{{notificationUsers.status}}</td>
+                <td>{{notificationUsers.createdTime}}</td>
+                <td>{{notificationUsers.lastModifiedTime}}</td>
+                <td>{{notificationUsers.reportDay}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../notification-users', notificationUsers.deviceId ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'notification-users/'+ notificationUsers.deviceId + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'notification-users/'+ notificationUsers.deviceId + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="notificationUsers && notificationUsers.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

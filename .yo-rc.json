@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "com.hdmon.gateway",
       "nativeLanguage": "en",
-      "microservicePath": "D:\\PeopleCare\\01-Mxh\\01-Java\\01-Jhipster\\04-Coding\\01-ChatServiceVer1.0\\chatservice"
+      "microservicePath": "D:\\PeopleCare\\01-Mxh\\01-Java\\01-Jhipster\\04-Coding\\06-NotificationVer1.0\\Notification"
     },
     "jhipsterVersion": "4.14.3",
     "baseName": "gateway",

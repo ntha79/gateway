@@ -1,0 +1,106 @@
+
+<div *ngIf="notificationMessages">
+    <h2><span jhiTranslate="gatewayApp.notificationMessages.detail.title">Notification Messages</span> {{notificationMessages.seqId}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.seqId">Seq Id</span></dt>
+        <dd>
+            <span>{{notificationMessages.seqId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.name">Name</span></dt>
+        <dd>
+            <span>{{notificationMessages.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.msgTitle">Msg Title</span></dt>
+        <dd>
+            <span>{{notificationMessages.msgTitle}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.msgBody">Msg Body</span></dt>
+        <dd>
+            <span>{{notificationMessages.msgBody}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.msgLink">Msg Link</span></dt>
+        <dd>
+            <span>{{notificationMessages.msgLink}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.msgData">Msg Data</span></dt>
+        <dd>
+            <span>{{notificationMessages.msgData}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.NotificationMessagesStatusEnum.' + notificationMessages.status}}">{{notificationMessages.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.clientType">Client Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.NotificationMessagesClientTypeEnum.' + notificationMessages.clientType}}">{{notificationMessages.clientType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.receiverType">Receiver Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.NotificationMessagesReceiverTypeEnum.' + notificationMessages.receiverType}}">{{notificationMessages.receiverType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.receiverList">Receiver List</span></dt>
+        <dd>
+            <span>{{notificationMessages.receiverList}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.errorList">Error List</span></dt>
+        <dd>
+            <span>{{notificationMessages.errorList}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.timeToSend">Time To Send</span></dt>
+        <dd>
+            <span>{{notificationMessages.timeToSend}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{notificationMessages.reportDay}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.sendErrorCount">Send Error Count</span></dt>
+        <dd>
+            <span>{{notificationMessages.sendErrorCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.priority">Priority</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.NotificationMessagesPriorityEnum.' + notificationMessages.priority}}">{{notificationMessages.priority}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.expireTime">Expire Time</span></dt>
+        <dd>
+            <span>{{notificationMessages.expireTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.hasSound">Has Sound</span></dt>
+        <dd>
+            <span>{{notificationMessages.hasSound}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{notificationMessages.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{notificationMessages.createdDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{notificationMessages.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationMessages.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{notificationMessages.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'notification-messages/'+ notificationMessages.seqId + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

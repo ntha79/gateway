@@ -1,0 +1,143 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myNotificationMessagesLabel" jhiTranslate="gatewayApp.notificationMessages.home.createOrEditLabel">Create or edit a Notification Messages</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!notificationMessages.seqId">
+            <label for="seqId" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="seqId" name="seqId"
+                   [(ngModel)]="notificationMessages.seqId" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="notificationMessages.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.msgTitle" for="field_msgTitle">Msg Title</label>
+            <input type="text" class="form-control" name="msgTitle" id="field_msgTitle"
+                [(ngModel)]="notificationMessages.msgTitle" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.msgBody" for="field_msgBody">Msg Body</label>
+            <input type="text" class="form-control" name="msgBody" id="field_msgBody"
+                [(ngModel)]="notificationMessages.msgBody" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.msgLink" for="field_msgLink">Msg Link</label>
+            <input type="text" class="form-control" name="msgLink" id="field_msgLink"
+                [(ngModel)]="notificationMessages.msgLink" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.msgData" for="field_msgData">Msg Data</label>
+            <input type="text" class="form-control" name="msgData" id="field_msgData"
+                [(ngModel)]="notificationMessages.msgData" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="notificationMessages.status" id="field_status" >
+                <option value="INIT">{{'gatewayApp.NotificationMessagesStatusEnum.INIT' | translate}}</option>
+                <option value="SENDING">{{'gatewayApp.NotificationMessagesStatusEnum.SENDING' | translate}}</option>
+                <option value="HASERROR">{{'gatewayApp.NotificationMessagesStatusEnum.HASERROR' | translate}}</option>
+                <option value="CANCEL">{{'gatewayApp.NotificationMessagesStatusEnum.CANCEL' | translate}}</option>
+                <option value="EXPIRED">{{'gatewayApp.NotificationMessagesStatusEnum.EXPIRED' | translate}}</option>
+                <option value="FINISH">{{'gatewayApp.NotificationMessagesStatusEnum.FINISH' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.clientType" for="field_clientType">Client Type</label>
+            <select class="form-control" name="clientType" [(ngModel)]="notificationMessages.clientType" id="field_clientType" >
+                <option value="ALL">{{'gatewayApp.NotificationMessagesClientTypeEnum.ALL' | translate}}</option>
+                <option value="WEB">{{'gatewayApp.NotificationMessagesClientTypeEnum.WEB' | translate}}</option>
+                <option value="APP">{{'gatewayApp.NotificationMessagesClientTypeEnum.APP' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.receiverType" for="field_receiverType">Receiver Type</label>
+            <select class="form-control" name="receiverType" [(ngModel)]="notificationMessages.receiverType" id="field_receiverType" >
+                <option value="ALL">{{'gatewayApp.NotificationMessagesReceiverTypeEnum.ALL' | translate}}</option>
+                <option value="LIST">{{'gatewayApp.NotificationMessagesReceiverTypeEnum.LIST' | translate}}</option>
+                <option value="ONE">{{'gatewayApp.NotificationMessagesReceiverTypeEnum.ONE' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.receiverList" for="field_receiverList">Receiver List</label>
+            <input type="text" class="form-control" name="receiverList" id="field_receiverList"
+                [(ngModel)]="notificationMessages.receiverList" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.errorList" for="field_errorList">Error List</label>
+            <input type="text" class="form-control" name="errorList" id="field_errorList"
+                [(ngModel)]="notificationMessages.errorList" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.timeToSend" for="field_timeToSend">Time To Send</label>
+            <input type="number" class="form-control" name="timeToSend" id="field_timeToSend"
+                [(ngModel)]="notificationMessages.timeToSend" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.reportDay" for="field_reportDay">Report Day</label>
+            <input type="number" class="form-control" name="reportDay" id="field_reportDay"
+                [(ngModel)]="notificationMessages.reportDay" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.sendErrorCount" for="field_sendErrorCount">Send Error Count</label>
+            <input type="number" class="form-control" name="sendErrorCount" id="field_sendErrorCount"
+                [(ngModel)]="notificationMessages.sendErrorCount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.priority" for="field_priority">Priority</label>
+            <select class="form-control" name="priority" [(ngModel)]="notificationMessages.priority" id="field_priority" >
+                <option value="NORMAL">{{'gatewayApp.NotificationMessagesPriorityEnum.NORMAL' | translate}}</option>
+                <option value="HIGHT">{{'gatewayApp.NotificationMessagesPriorityEnum.HIGHT' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.expireTime" for="field_expireTime">Expire Time</label>
+            <input type="number" class="form-control" name="expireTime" id="field_expireTime"
+                [(ngModel)]="notificationMessages.expireTime" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.hasSound" for="field_hasSound">Has Sound</label>
+            <input type="checkbox" class="form-control" name="hasSound" id="field_hasSound"
+                [(ngModel)]="notificationMessages.hasSound" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="notificationMessages.createdBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.createdDate" for="field_createdDate">Created Date</label>
+            <div class="d-flex">
+                <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="notificationMessages.createdDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="notificationMessages.lastModifiedBy" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.notificationMessages.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="d-flex">
+                <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" [(ngModel)]="notificationMessages.lastModifiedDate"
+                />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

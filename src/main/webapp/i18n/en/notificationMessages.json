@@ -1,0 +1,46 @@
+
+{
+    "gatewayApp": {
+        "notificationMessages" : {
+            "home": {
+                "title": "Notification Messages",
+                "createLabel": "Create a new Notification Messages",
+                "createOrEditLabel": "Create or edit a Notification Messages"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Notification Messages {{ id }}?"
+            },
+            "detail": {
+                "title": "Notification Messages"
+            },
+            "seqId": "Seq Id",
+            "name": "Name",
+            "msgTitle": "Msg Title",
+            "msgBody": "Msg Body",
+            "msgLink": "Msg Link",
+            "msgData": "Msg Data",
+            "status": "Status",
+            "clientType": "Client Type",
+            "receiverType": "Receiver Type",
+            "receiverList": "Receiver List",
+            "errorList": "Error List",
+            "timeToSend": "Time To Send",
+            "reportDay": "Report Day",
+            "sendErrorCount": "Send Error Count",
+            "priority": "Priority",
+            "expireTime": "Expire Time",
+            "hasSound": "Has Sound",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date"
+        }
+    },
+    "notificationServiceApp": {
+        "notificationMessages" : {
+            "created": "A new Notification Messages is created with identifier {{ param }}",
+            "updated": "A Notification Messages is updated with identifier {{ param }}",
+            "deleted": "A Notification Messages is deleted with identifier {{ param }}"
+        }
+    }
+}

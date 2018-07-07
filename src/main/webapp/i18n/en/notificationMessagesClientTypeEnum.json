@@ -1,0 +1,10 @@
+{
+    "gatewayApp": {
+        "NotificationMessagesClientTypeEnum" : {
+            "null": "",
+            "ALL": "ALL",
+            "WEB": "WEB",
+            "APP": "APP"
+        }
+    }
+}

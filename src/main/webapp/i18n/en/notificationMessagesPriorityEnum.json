@@ -1,0 +1,9 @@
+{
+    "gatewayApp": {
+        "NotificationMessagesPriorityEnum" : {
+            "null": "",
+            "NORMAL": "NORMAL",
+            "HIGHT": "HIGHT"
+        }
+    }
+}

@@ -20,6 +20,8 @@
                 "serviceSettings": "Service Settings",
                 "chatmessagestatistics": "chatmessagestatistics",
                 "chatGroupStatistics": "Chat Group Statistics",
+                "notificationUsers": "Notification Users",
+                "notificationMessages": "Notification Messages",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

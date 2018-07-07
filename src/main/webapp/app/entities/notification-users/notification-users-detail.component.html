@@ -1,0 +1,58 @@
+
+<div *ngIf="notificationUsers">
+    <h2><span jhiTranslate="gatewayApp.notificationUsers.detail.title">Notification Users</span> {{notificationUsers.deviceId}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.deviceId">Device Id</span></dt>
+        <dd>
+            <span>{{notificationUsers.deviceId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.gmcRegId">Gmc Reg Id</span></dt>
+        <dd>
+            <span>{{notificationUsers.gmcRegId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.clientType">Client Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.NotificationUsersClientTypeEnum.' + notificationUsers.clientType}}">{{notificationUsers.clientType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.ownerUserid">Owner Userid</span></dt>
+        <dd>
+            <span>{{notificationUsers.ownerUserid}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.ownerUsername">Owner Username</span></dt>
+        <dd>
+            <span>{{notificationUsers.ownerUsername}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.NotificationUsersStatusEnum.' + notificationUsers.status}}">{{notificationUsers.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{notificationUsers.createdTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.lastModifiedTime">Last Modified Time</span></dt>
+        <dd>
+            <span>{{notificationUsers.lastModifiedTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.notificationUsers.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{notificationUsers.reportDay}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'notification-users/'+ notificationUsers.deviceId + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
