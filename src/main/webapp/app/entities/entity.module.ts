@@ -10,6 +10,7 @@ import { GatewayPushNotificationsModule } from './push-notifications/push-notifi
 import { GatewayServiceSettingsModule } from './service-settings/service-settings.module';
 import { GatewayNotificationUsersModule } from './notification-users/notification-users.module';
 import { GatewayNotificationMessagesModule } from './notification-messages/notification-messages.module';
+import { GatewayChatGroupsModule } from './chat-groups/chat-groups.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -24,6 +25,7 @@ import { GatewayNotificationMessagesModule } from './notification-messages/notif
         GatewayServiceSettingsModule,
         GatewayNotificationUsersModule,
         GatewayNotificationMessagesModule,
+        GatewayChatGroupsModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

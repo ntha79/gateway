@@ -1,17 +1,17 @@
 
 {
     "gatewayApp": {
-        "chatgroups" : {
+        "chatGroups" : {
             "home": {
-                "title": "Chatgroups",
-                "createLabel": "Create a new Chatgroups",
-                "createOrEditLabel": "Create or edit a Chatgroups"
+                "title": "Chat Groups",
+                "createLabel": "Create a new Chat Groups",
+                "createOrEditLabel": "Create or edit a Chat Groups"
             },
             "delete": {
-                "question": "Are you sure you want to delete Chatgroups {{ id }}?"
+                "question": "Are you sure you want to delete Chat Groups {{ id }}?"
             },
             "detail": {
-                "title": "Chatgroups"
+                "title": "Chat Groups"
             },
             "groupId": "Group Id",
             "groupType": "Group Type",
@@ -23,8 +23,8 @@
             "groupStatus": "Group Status",
             "memberLists": "Member Lists",
             "maxMember": "Max Member",
-            "createdById": "Created By Id",
-            "createdBy": "Created By",
+            "ownerUserid": "Owner Userid",
+            "ownerUsername": "Owner Username",
             "createdTime": "Created Time",
             "lastModifiedBy": "Last Modified By",
             "lastModifiedTime": "Last Modified Time",
@@ -32,10 +32,10 @@
         }
     },
     "chatserviceApp": {
-        "chatgroups" : {
-            "created": "A new Chatgroups is created with identifier {{ param }}",
-            "updated": "A Chatgroups is updated with identifier {{ param }}",
-            "deleted": "A Chatgroups is deleted with identifier {{ param }}"
+        "chatGroups" : {
+            "created": "A new Chat Groups is created with identifier {{ param }}",
+            "updated": "A Chat Groups is updated with identifier {{ param }}",
+            "deleted": "A Chat Groups is deleted with identifier {{ param }}"
         }
     }
 }

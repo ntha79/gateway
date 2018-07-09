@@ -1,0 +1,86 @@
+
+<div *ngIf="chatGroups">
+    <h2><span jhiTranslate="gatewayApp.chatGroups.detail.title">Chat Groups</span> {{chatGroups.groupId}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.chatGroups.groupId">Group Id</span></dt>
+        <dd>
+            <span>{{chatGroups.groupId}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.groupType">Group Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.GroupTypeEnum.' + chatGroups.groupType}}">{{chatGroups.groupType}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.groupName">Group Name</span></dt>
+        <dd>
+            <span>{{chatGroups.groupName}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.groupIcon">Group Icon</span></dt>
+        <dd>
+            <span>{{chatGroups.groupIcon}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.groupBackground">Group Background</span></dt>
+        <dd>
+            <span>{{chatGroups.groupBackground}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.groupSlogan">Group Slogan</span></dt>
+        <dd>
+            <span>{{chatGroups.groupSlogan}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.groupSumary">Group Sumary</span></dt>
+        <dd>
+            <span>{{chatGroups.groupSumary}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.groupStatus">Group Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gatewayApp.GroupMemberStatusEnum.' + chatGroups.groupStatus}}">{{chatGroups.groupStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.memberLists">Member Lists</span></dt>
+        <dd>
+            <span>{{chatGroups.memberLists}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.maxMember">Max Member</span></dt>
+        <dd>
+            <span>{{chatGroups.maxMember}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.ownerUserid">Owner Userid</span></dt>
+        <dd>
+            <span>{{chatGroups.ownerUserid}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.ownerUsername">Owner Username</span></dt>
+        <dd>
+            <span>{{chatGroups.ownerUsername}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.createdTime">Created Time</span></dt>
+        <dd>
+            <span>{{chatGroups.createdTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{chatGroups.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.lastModifiedTime">Last Modified Time</span></dt>
+        <dd>
+            <span>{{chatGroups.lastModifiedTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.chatGroups.reportDay">Report Day</span></dt>
+        <dd>
+            <span>{{chatGroups.reportDay}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'chat-groups/'+ chatGroups.groupId + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

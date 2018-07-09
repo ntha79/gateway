@@ -1,17 +1,17 @@
 
 {
     "gatewayApp": {
-        "chatgroups" : {
+        "chatGroups" : {
             "home": {
-                "title": "Chatgroups",
-                "createLabel": "Thêm mới một Chatgroups",
-                "createOrEditLabel": "Thêm mới hoặc cập nhật Chatgroups"
+                "title": "Chat Groups",
+                "createLabel": "Thêm mới một Chat Groups",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Chat Groups"
             },
             "delete": {
-                "question": "Bạn có chắc là muốn xóa Chatgroups {{ id }}?"
+                "question": "Bạn có chắc là muốn xóa Chat Groups {{ id }}?"
             },
             "detail": {
-                "title": "Chatgroups"
+                "title": "Chat Groups"
             },
             "groupId": "Group Id",
             "groupType": "Group Type",
@@ -23,8 +23,8 @@
             "groupStatus": "Group Status",
             "memberLists": "Member Lists",
             "maxMember": "Max Member",
-            "createdById": "Created By Id",
-            "createdBy": "Created By",
+            "ownerUserid": "Owner Userid",
+            "ownerUsername": "Owner Username",
             "createdTime": "Created Time",
             "lastModifiedBy": "Last Modified By",
             "lastModifiedTime": "Last Modified Time",
@@ -32,10 +32,10 @@
         }
     },
     "chatserviceApp": {
-        "chatgroups" : {
-            "created": "Một Chatgroups mới được tạo với định danh {{ param }}",
-            "updated": "Một Chatgroups cập nhật với định danh {{ param }}",
-            "deleted": "Một Chatgroups đã xóa với định danh {{ param }}"
+        "chatGroups" : {
+            "created": "Một Chat Groups mới được tạo với định danh {{ param }}",
+            "updated": "Một Chat Groups cập nhật với định danh {{ param }}",
+            "deleted": "Một Chat Groups đã xóa với định danh {{ param }}"
         }
     }
 }
