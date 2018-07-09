@@ -1,10 +1,6 @@
 package com.hdmon.gateway.security.oauth2;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hdmon.gateway.config.ApplicationProperties;
 import com.hdmon.gateway.config.oauth2.OAuth2Properties;
-import com.hdmon.gateway.domain.IsoResponseEntity;
-import com.hdmon.gateway.web.rest.vm.StoreUserVM;
 import io.github.jhipster.config.JHipsterProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
