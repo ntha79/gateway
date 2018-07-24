@@ -180,3 +180,5 @@ oauth2:
 # ===================================================================
 
 application:
+    microservice:
+        notification-url: http://localhost:8080/notificationservice
