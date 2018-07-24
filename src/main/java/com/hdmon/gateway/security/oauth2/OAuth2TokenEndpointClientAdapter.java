@@ -36,7 +36,7 @@ public abstract class OAuth2TokenEndpointClientAdapter implements OAuth2TokenEnd
      * @return the access token.
      */
     @Override
-    public OAuth2AccessToken sendPasswordGrant(String username, String password, String deviceId, String gmcRegId, String clientType) {
+    public OAuth2AccessToken sendPasswordGrant(String username, String password) {
         OAuth2AccessToken accessToken = null;
         HttpHeaders reqHeaders = new HttpHeaders();
         reqHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -117,4 +117,33 @@ public abstract class OAuth2TokenEndpointClientAdapter implements OAuth2TokenEnd
         }
         return tokenEndpointUrl;
     }
+
+    //=========================================HDMON-START=========================================
+    /**
+     * Sends a password grant to the token endpoint.
+     *
+     * @param loginname the username/mobile to authenticate.
+     * @param password his password.
+     * @return the access token.
+     */
+    @Override
+    public ResponseEntity<OAuth2AccessToken> sendPasswordGrant_hd(String loginname, String password) {
+        HttpHeaders reqHeaders = new HttpHeaders();
+        reqHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        MultiValueMap<String, String> formParams = new LinkedMultiValueMap<>();
+        formParams.set("username", loginname);
+        formParams.set("password", password);
+        formParams.set("grant_type", "password");
+        addAuthentication(reqHeaders, formParams);
+        HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(formParams, reqHeaders);
+        log.debug("contacting OAuth2 token endpoint to login user: {}", loginname);
+        ResponseEntity<OAuth2AccessToken>
+            responseEntity = restTemplate.postForEntity(getTokenEndpoint(), entity, OAuth2AccessToken.class);
+        if (responseEntity.getStatusCode() != HttpStatus.OK) {
+            log.debug("failed to authenticate user with OAuth2 token endpoint, status: {}", responseEntity.getStatusCodeValue());
+        }
+        return responseEntity;
+    }
+
+    //=========================================HDMON-END===========================================
 }

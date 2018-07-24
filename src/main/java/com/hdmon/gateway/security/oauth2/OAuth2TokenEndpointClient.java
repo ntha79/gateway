@@ -1,5 +1,6 @@
 package com.hdmon.gateway.security.oauth2;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 
 /**
@@ -18,7 +19,7 @@ public interface OAuth2TokenEndpointClient {
      * @throws org.springframework.security.oauth2.common.exceptions.ClientAuthenticationException
      * if we cannot contact the token endpoint.
      */
-    OAuth2AccessToken sendPasswordGrant(String username, String password, String deviceId, String gmcRegId, String clientType);
+    OAuth2AccessToken sendPasswordGrant(String username, String password);
 
     /**
      * Send a refresh_token grant to the token endpoint.
@@ -29,4 +30,13 @@ public interface OAuth2TokenEndpointClient {
      * if we cannot contact the token endpoint.
      */
     OAuth2AccessToken sendRefreshGrant(String refreshTokenValue);
+
+    /**
+     * Send a password grant to the token endpoint.
+     *
+     * @param loginname the loginname to authenticate.
+     * @param password his password.
+     * @return the access token and enclosed refresh token received from the token endpoint.
+     */
+    ResponseEntity<OAuth2AccessToken> sendPasswordGrant_hd(String loginname, String password);
 }

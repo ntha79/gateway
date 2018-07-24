@@ -5,20 +5,21 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.hdmon.gateway.config.ApplicationProperties;
 import com.hdmon.gateway.domain.IsoResponseEntity;
+import com.hdmon.gateway.service.util.MicroserviceHelper;
+import com.hdmon.gateway.service.util.TokenHelper;
+import com.hdmon.gateway.web.rest.errors.ResponseErrorCode;
 import com.hdmon.gateway.web.rest.vm.CancelGcmUserVM;
 import com.hdmon.gateway.web.rest.vm.StoreGcmUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.*;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -78,16 +79,8 @@ public class OAuth2AuthenticationService {
             String username = params.get("username");
             String password = params.get("password");
             boolean rememberMe = Boolean.valueOf(params.get("rememberMe"));
-            String deviceId = params.get("deviceId");
-            String gmcRegId = params.get("gmcRegId");
-            String clientType = params.get("clientType");
 
-            OAuth2AccessToken accessToken = authorizationClient.sendPasswordGrant(username, password, deviceId, gmcRegId, clientType);
-            if(accessToken != null)
-            {
-                storeGmcToken(accessToken.getValue(), username, deviceId, gmcRegId, clientType);
-            }
-
+            OAuth2AccessToken accessToken = authorizationClient.sendPasswordGrant(username, password);
             OAuth2Cookies cookies = new OAuth2Cookies();
             cookieHelper.createCookies(request, accessToken, rememberMe, cookies);
             cookies.addCookiesTo(response);
@@ -118,7 +111,7 @@ public class OAuth2AuthenticationService {
         //check if non-remember-me session has expired
         if (cookieHelper.isSessionExpired(refreshCookie)) {
             log.info("session has expired due to inactivity");
-            logout(request, response, null);       //logout to clear cookies in browser
+            logout(request, response);              //logout to clear cookies in browser
             return stripTokens(request);            //don't include cookies downstream
         }
         OAuth2Cookies cookies = getCachedCookies(refreshCookie.getValue());
@@ -168,17 +161,10 @@ public class OAuth2AuthenticationService {
      * @param httpServletRequest  the request containing the Cookies.
      * @param httpServletResponse the response used to clear them.
      */
-    public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
-                       Map<String, String> params) {
-        //Chỉ trường hợp logout mới xóa
-        if(params != null) {
-            Cookie cookie = OAuth2CookieHelper.getAccessTokenCookie(httpServletRequest);
-            String accessToken = cookie.getValue();
-            String deviceId = params.get("deviceId");
-            cancelGmcToken(accessToken, deviceId);
-        }
+    public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
-        //Xóa cookie
+        Cookie cookie = OAuth2CookieHelper.getAccessTokenCookie(httpServletRequest);
+
         cookieHelper.clearCookies(httpServletRequest, httpServletResponse);
     }
 
@@ -194,93 +180,129 @@ public class OAuth2AuthenticationService {
         return new CookiesHttpServletRequestWrapper(httpServletRequest, cookies);
     }
 
+    //=========================================HDMON-START=========================================
+
     /**
-     * Lưu thông tin của gmc token sang notification serivce
-     *
-     * @param login  username của thành viên đăng nhập.
-     * @param deviceId id của thiết bị hiện thời.
-     * @param gmcRegId token nhận được từ gmc
+     * Đăng nhập vào hệ thống.
+     * Last update date: 20-07-2018
+     * @param params: các tham số do client gửi lên.
+     * @return: token mới nếu hợp lệ, không thì báo lỗi.
      */
-    protected boolean storeGmcToken(String accessToken, String login, String deviceId, String gmcRegId, String clientType)
-    {
-        boolean blResult = false;
+    public OAuth2AccessToken authenticate_hd(HttpServletRequest request, HttpServletResponse response,
+                                                          Map<String, String> params, IsoResponseEntity outputEntity) {
+        String loginname = params.get("loginname");
+        String password = params.get("password");
+        boolean rememberMe = Boolean.valueOf(params.get("rememberMe"));
+        String deviceId = params.get("deviceId");
+        String gmcRegId = params.get("gmcRegId");
+        String clientType = params.get("clientType");
+        String appVersion = params.get("appVersion");
+        String clientVersion = params.get("clientVersion");
+        String clientLocation = params.get("clientLocation");
+
+        OAuth2AccessToken accessToken = null;
         try {
-            if (clientType.isEmpty()) clientType = "UNKNOW";
-            RestTemplate restTemplate = new RestTemplate();
-            ObjectMapper mapper = new ObjectMapper();
-            String encodedAuth = OAuth2AccessToken.BEARER_TYPE + " " + accessToken;
+            ResponseEntity<OAuth2AccessToken> responseEntity = authorizationClient.sendPasswordGrant_hd(loginname, password);
+            if (responseEntity.getStatusCode() == HttpStatus.OK) {
+                accessToken = responseEntity.getBody();
+                if (accessToken != null) {
+                    String accessTokenValue = accessToken.getValue();
+                    Thread storeGmcTokenThread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Long userId = TokenHelper.getUserIdFromToken(accessTokenValue);
+                                String notificationUrl = applicationProperties.getMicroservices().getNotificationUrl();
 
-            HttpHeaders reqHeaders = new HttpHeaders();
-            reqHeaders.add("Authorization", encodedAuth);
-            reqHeaders.add("X-XSRF-TOKEN", accessToken);
-            reqHeaders.add("Cookie", "XSRF-TOKEN=" + accessToken);
-            reqHeaders.setContentType(MediaType.APPLICATION_JSON);
+                                //Lưu thông tin về GCM
+                                MicroserviceHelper.storeGmcTokenWhenLogin(notificationUrl, accessTokenValue, userId, deviceId, gmcRegId, clientType);
 
-            StoreGcmUserVM storeUserVM = new  StoreGcmUserVM(deviceId, gmcRegId, clientType, login);
-            String jsonBody = mapper.writeValueAsString(storeUserVM);
+                                //Lưu thông tin quản lý thiết bị
+                                MicroserviceHelper.updateDeviceManagerByLogin(notificationUrl, accessTokenValue, userId, deviceId, appVersion, clientVersion, clientType, clientLocation);
+                            } catch (Exception ex) {
+                            }
+                        }
+                    });
+                    storeGmcTokenThread.start();
+                }
 
-            HttpEntity<String> httpEntity = new HttpEntity<>(jsonBody, reqHeaders);
-            String requestUrl = applicationProperties.getMicroservices().getNotificationUrl() + "/api/notificationusers/storeuser";
-            ResponseEntity<IsoResponseEntity> responseEntity = restTemplate.postForEntity(requestUrl, httpEntity, IsoResponseEntity.class);
-
-            if (responseEntity.getStatusCode() != HttpStatus.OK) {
-                log.debug("failed to store GmcToken on Notification Service, status: {}", responseEntity.getStatusCodeValue());
-                blResult = false;
-            } else {
-                if (responseEntity.getBody().getError() == 1) {
-                    blResult = true;
+                OAuth2Cookies cookies = new OAuth2Cookies();
+                cookieHelper.createCookies(request, accessToken, rememberMe, cookies);
+                cookies.addCookiesTo(response);
+                if (log.isDebugEnabled()) {
+                    log.debug("successfully authenticated user {}", params.get("loginname"));
                 }
             }
         }
         catch (Exception ex)
         {
-            log.info("Loi ghi trong ham OAuth2AuthenticationService.storeGmcToken(token, {},{},{},{})", login, deviceId, gmcRegId, clientType);
-            log.error("{}", ex);
+            outputEntity.setError(ResponseErrorCode.UAAFAIL.getValue());
+            outputEntity.setMessage("incorrect_usernameorpassword");
+            outputEntity.setException("Failed to get OAuth2 tokens from UAA!");
         }
-        return blResult;
+        return accessToken;
     }
 
     /**
-     * Thay đổi trạng thái của gmc token trong notification serivce khi userlogout
-     * @param accessToken token của user đang thao tác
-     * @param deviceId id của thiết bị hiện thời.
-     * return true/false
+     * Đăng xuất khỏi hệ thống.
+     * Last update date: 19-07-2018
+     * @param params: các tham số do client gửi lên.
+     * @return: token mới nếu hợp lệ, không thì báo lỗi.
      */
-    protected boolean cancelGmcToken(String accessToken, String deviceId)
-    {
-        boolean blResult = false;
-        try {
-            RestTemplate restTemplate = new RestTemplate();
-            ObjectMapper mapper = new ObjectMapper();
-            String encodedAuth = OAuth2AccessToken.BEARER_TYPE + " " + accessToken;
+    public boolean logout_hd(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+                          Map<String, String> params) {
+        //Chỉ trường hợp truyền deviceId thì thực hiện bổ sung các tác vụ
+        if (params != null) {
+            String accessToken = TokenHelper.extractHeaderToken(httpServletRequest);
+            String deviceId = params.get("deviceId");
 
-            HttpHeaders reqHeaders = new HttpHeaders();
-            reqHeaders.add("Authorization", encodedAuth);
-            reqHeaders.add("X-XSRF-TOKEN", accessToken);
-            reqHeaders.add("Cookie", "XSRF-TOKEN=" + accessToken);
-            reqHeaders.setContentType(MediaType.APPLICATION_JSON);
+            Long userId = TokenHelper.getUserIdFromToken(accessToken);
+            String notificationUrl = applicationProperties.getMicroservices().getNotificationUrl();
 
-            CancelGcmUserVM cancelGcmUserVM = new  CancelGcmUserVM(deviceId);
-            String jsonBody = mapper.writeValueAsString(cancelGcmUserVM);
+            //Hủy chế độ nhận notification
+            MicroserviceHelper.cancelGmcTokenWhenLogout(notificationUrl, accessToken, deviceId, userId);
 
-            HttpEntity<String> httpEntity = new HttpEntity<>(jsonBody, reqHeaders);
-            String requestUrl = applicationProperties.getMicroservices().getNotificationUrl() + "/api/notificationusers/canceluser";
-            ResponseEntity<IsoResponseEntity> responseEntity = restTemplate.postForEntity(requestUrl, httpEntity, IsoResponseEntity.class);
+            //Cập nhật thiết bị
+            MicroserviceHelper.updateDeviceManagerByLogout(notificationUrl, accessToken, userId, deviceId);
+        }
 
-            if (responseEntity.getStatusCode() != HttpStatus.OK) {
-                log.debug("failed to cancel GmcToken on Notification Service, status: {}", responseEntity.getStatusCodeValue());
-                blResult = false;
-            } else {
-                if (responseEntity.getBody().getError() == 1) {
-                    blResult = true;
-                }
+        Cookie cookie = OAuth2CookieHelper.getAccessTokenCookie(httpServletRequest);
+        if(cookie != null) {
+            //Xóa cookie
+            cookieHelper.clearCookies(httpServletRequest, httpServletResponse);
+        }
+        return true;
+    }
+
+    /**
+     * Lấy lại token dựa theo refresh từ client gửi lên
+     * Last update date: 19-07-2018
+     * @param params: các tham số do client gửi lên.
+     * @return: token mới nếu hợp lệ, không thì báo lỗi.
+     */
+    public OAuth2AccessToken refreshTokenForApp_hd(HttpServletRequest httpServletRequest, HttpServletResponse response, Map<String, String> params) {
+        String refreshValue = params.get("refreshToken");
+        String userIdValue = params.get("userLoginId");
+
+        //send a refresh_token grant to UAA, getting new tokens
+        OAuth2AccessToken accessToken = authorizationClient.sendRefreshGrant(refreshValue);
+
+        //Kiểm tra hợp lệ
+        final HashMap claimsMap = TokenHelper.getClaimsFromToken(accessToken.getValue());
+        String userIdInToken = claimsMap.get("user_id").toString();
+        if(userIdInToken.equals(userIdValue)) {
+            OAuth2Cookies cookies = new OAuth2Cookies();
+            cookieHelper.createCookies(httpServletRequest, accessToken, false, cookies);
+            cookies.addCookiesTo(response);
+            if (log.isDebugEnabled()) {
+                log.debug("successfully authenticated user {}", params.get("username"));
             }
         }
-        catch (Exception ex)
-        {
-            log.info("Loi ghi trong ham OAuth2AuthenticationService.cancelGmcToken(token, {})", deviceId);
-            log.error("{}", ex);
+        else{
+            accessToken = null;
         }
-        return blResult;
+        return accessToken;
     }
+
+    //===========================================HDMON-END===========================================
 }

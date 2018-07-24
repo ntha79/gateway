@@ -135,6 +135,9 @@ jhipster:
             token-service-id: uaa
             client-id: internal
             client-secret: internal
+        authentication:
+          jwt:
+            secret: HelloWorld!
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: gateway@localhost
         base-url: http://127.0.0.1:8080
@@ -171,7 +174,7 @@ oauth2:
     web-client-configuration:
         #keep in sync with UAA configuration
         client-id: web_app
-        secret: changeit
+        secret: changeit1111
         # Controls session expiration due to inactivity (ignored for remember-me).
         # Negative values disable session inactivity expiration.
         session-timeout-in-seconds: 1800

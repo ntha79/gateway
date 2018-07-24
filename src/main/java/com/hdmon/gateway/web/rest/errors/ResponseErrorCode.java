@@ -17,6 +17,8 @@ public enum ResponseErrorCode {
     DENIED(-4),
     NOMEMBER(-5),
     REJECTED(-6),
+    FAIL(-7),
+    UAAFAIL(-8),
     SYSTEM_ERROR(-100);
 
     private final int value;

@@ -1,5 +1,7 @@
 package com.hdmon.gateway.web.rest.vm;
 
+import java.security.acl.LastOwnerException;
+
 /**
  * Created by UserName on 6/30/2018.
  */
@@ -7,7 +9,7 @@ public class StoreGcmUserVM {
     private String deviceId;
     private String gmcRegId;
     private String clientType;
-    private String ownerUsername;
+    private String userLoginname;
 
     public StoreGcmUserVM()
     {
@@ -19,15 +21,15 @@ public class StoreGcmUserVM {
         this.deviceId = entity.deviceId;
         this.gmcRegId = entity.gmcRegId;
         this.clientType = entity.clientType;
-        this.ownerUsername = entity.ownerUsername;
+        this.userLoginname = entity.userLoginname;
     }
 
-    public StoreGcmUserVM(String deviceId, String gmcRegId, String clientType, String ownerUsername)
+    public StoreGcmUserVM(String deviceId, String gmcRegId, String clientType, String userLoginname)
     {
         this.deviceId = deviceId;
         this.gmcRegId = gmcRegId;
         this.clientType = clientType;
-        this.ownerUsername = ownerUsername;
+        this.userLoginname = userLoginname;
     }
 
     public String getDeviceId() {
@@ -69,17 +71,17 @@ public class StoreGcmUserVM {
         this.clientType = clientType;
     }
 
-    public String getOwnerUsername() {
-        return ownerUsername;
+    public String getUserLoginname() {
+        return userLoginname;
     }
 
-    public StoreGcmUserVM ownerUsername(String ownerUsername) {
-        this.ownerUsername = ownerUsername;
+    public StoreGcmUserVM userLoginname(String userLoginname) {
+        this.userLoginname = userLoginname;
         return this;
     }
 
-    public void setOwnerUsername(String ownerUsername) {
-        this.ownerUsername = ownerUsername;
+    public void setUserLoginname(String userLoginname) {
+        this.userLoginname = userLoginname;
     }
 
     @Override
@@ -88,7 +90,7 @@ public class StoreGcmUserVM {
             "deviceId='" + getDeviceId() + '\'' +
             ", gmcRegId='" + getGmcRegId() + '\'' +
             ", clientType='" + getClientType() + '\'' +
-            ", ownerUsername='" + getOwnerUsername() + '\'' +
+            ", userLoginname='" + getUserLoginname() + '\'' +
             '}';
     }
 }

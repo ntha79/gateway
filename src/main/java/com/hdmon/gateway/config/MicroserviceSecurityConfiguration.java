@@ -2,9 +2,8 @@ package com.hdmon.gateway.config;
 
 import com.hdmon.gateway.config.oauth2.OAuth2JwtAccessTokenConverter;
 import com.hdmon.gateway.config.oauth2.OAuth2Properties;
-import com.hdmon.gateway.security.oauth2.OAuth2SignatureVerifierClient;
 import com.hdmon.gateway.security.AuthoritiesConstants;
-
+import com.hdmon.gateway.security.oauth2.OAuth2SignatureVerifierClient;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.loadbalancer.RestTemplateCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -19,8 +18,8 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfFilter;
-import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableResourceServer
